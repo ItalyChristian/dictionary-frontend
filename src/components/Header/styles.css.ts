@@ -1,10 +1,28 @@
 import { style } from "@vanilla-extract/css";
-import { radii, spacing } from "@/styles/tokens/spacing.css";
+import { spacing } from "@/styles/tokens/spacing.css";
 import { typography } from "@/styles/tokens/typography.css";
 import { colors } from "@/styles/tokens/colors.css";
 
 export const wrapper = style({
+  width: "calc(80vw - 1rem)",
   display: "flex",
+  alignItems: "center",
   justifyContent: "space-between",
   padding: spacing.xl,
+});
+
+export const title = style({
+  fontSize: typography.fontSize["4xl"],
+  fontWeight: typography.fontWeight.bold,
+  color: colors.status.purple,
+});
+
+export const inputIcon = style({
+  color: colors.text.secondary,
+  cursor: "pointer",
+  paddingRight: "0.5rem",
+
+  ":hover": {
+    color: colors.text.primary,
+  },
 });
