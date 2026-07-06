@@ -1,9 +1,9 @@
 "use client";
 
 import clsx from "clsx";
+import * as styles from "./styles.css";
 import { usePathname } from "next/navigation";
 import { glass } from "@/styles/components/glass.css";
-import * as styles from "./styles.css";
 import { navItems } from "./data";
 
 export const Sidebar = () => {
