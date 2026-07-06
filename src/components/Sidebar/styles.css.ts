@@ -4,7 +4,7 @@ import { typography } from "@/styles/tokens/typography.css";
 import { colors } from "@/styles/tokens/colors.css";
 
 export const sidebar = style({
-  height: "fit-content",
+  minHeight: "calc(100vh - 3rem)",
   position: "sticky",
 
   padding: spacing.xl,
@@ -13,10 +13,10 @@ export const sidebar = style({
 export const navLink = style({
   display: "flex",
   alignItems: "center",
-  gap: 14,
+  gap: spacing.sm,
   padding: `${spacing.md} ${spacing.lg}`,
   borderRadius: radii.lg,
-  color: "rgba(255, 255, 255, 0.6)",
+  color: colors.text.secondary,
   textDecoration: "none",
   transition: "all 0.25s ease",
   fontSize: 14,
@@ -25,7 +25,7 @@ export const navLink = style({
   selectors: {
     "&:hover": {
       background: "rgba(255, 255, 255, 0.08)",
-      color: "#ffffff",
+      color: colors.status.purple,
     },
   },
 });
@@ -46,14 +46,14 @@ export const icon = style({
   width: 20,
   height: 20,
   flexShrink: 0,
-  color: "rgba(255, 255, 255, 0.4)",
+  color: colors.text.secondary,
   transition: "color 0.25s ease",
 });
 
 export const iconHover = style({
   selectors: {
     [`${navLink}:hover &`]: {
-      color: colors.text.primary,
+      color: colors.status.purple,
     },
   },
 });
