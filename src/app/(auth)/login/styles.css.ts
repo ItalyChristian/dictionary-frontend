@@ -48,6 +48,22 @@ export const image = style({
   },
 });
 
+export const loadingimage = style({
+  width: "100%",
+  maxWidth: "30rem",
+  height: "auto",
+  aspectRatio: "4 / 5",
+  objectFit: "cover",
+  flexShrink: 0,
+  bottom: 0,
+
+  "@media": {
+    "(max-width: 1024px)": {
+      display: "none",
+    },
+  },
+});
+
 export const content = style([
   flexColumnCenter,
   { gap: spacing.lg, paddingLeft: "3rem" },
@@ -58,4 +74,3 @@ export const title = style({
   fontWeight: typography.fontWeight.bold,
   color: colors.text.primary,
 });
-
