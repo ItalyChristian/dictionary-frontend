@@ -4,6 +4,8 @@ import { LoginForm } from "./LoginForm";
 import * as styles from "./styles.css";
 import { glassCard } from "@/styles/components/glass.css";
 import { flexColumnCenter } from "@/styles/components/gridSystem.css";
+import Image from "next/image";
+import loginBanner from "@/assets/images/login-banner-image.png";
 
 export default async function LoginPage() {
   const cookieStore = await cookies();
@@ -15,13 +17,17 @@ export default async function LoginPage() {
 
   return (
     <div className={styles.wrapper}>
-      <div className={`${glassCard} ${styles.content}`}>
-        <div className={flexColumnCenter}>
-          <h1 className={styles.title}>Welcome back!</h1>
-          <p>Log in to your account</p>
-        </div>
+      <div className={`${glassCard} ${styles.card}`}>
+        <Image src={loginBanner} alt="" className={styles.image} />
 
-        <LoginForm />
+        <div className={styles.content}>
+          <div className={flexColumnCenter}>
+            <h1 className={styles.title}>Welcome back!</h1>
+            <p>Log in to your account</p>
+          </div>
+
+          <LoginForm />
+        </div>
       </div>
     </div>
   );
