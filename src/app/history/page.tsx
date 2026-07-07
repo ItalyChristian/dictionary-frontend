@@ -26,7 +26,7 @@ export default function HistoryPage() {
     goToPage,
     nextPage,
     prevPage,
-  } = useHistory(page, 10);
+  } = useHistory(page, 5);
 
   if (isLoading) {
     return <History.Loading title={pageTitle} message="Loading history..." />;
@@ -52,8 +52,8 @@ export default function HistoryPage() {
           ) : (
             <>
               <div className={styles.list}>
-                {history.map((item) => (
-                  <History.Item key={item.word} history={item} />
+                {history.map((item, index) => (
+                  <History.Item key={index} history={item} />
                 ))}
               </div>
 
@@ -66,7 +66,7 @@ export default function HistoryPage() {
                 onNext={nextPage}
                 onPrev={prevPage}
                 totalItems={totalDocs}
-                itemsPerPage={10}
+                itemsPerPage={5}
                 className={styles.pagination}
               />
             </>

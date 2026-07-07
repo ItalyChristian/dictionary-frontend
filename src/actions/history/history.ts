@@ -1,3 +1,5 @@
+"use server";
+
 import { HistoryResponse } from "@/types/history";
 import { QueryParams } from "@/types/pagination";
 import { API_BASE_URL } from "@/utils/constants";
