@@ -48,19 +48,3 @@ export const errorContainer = style({
   gap: spacing.md,
   textAlign: "center",
 });
-
-export const retryButton = style({
-  padding: `${spacing.sm} ${spacing["2xl"]}`,
-  backgroundColor: colors.status.purple,
-  color: "white",
-  border: "none",
-  borderRadius: radii.md,
-  fontSize: typography.fontSize.base,
-  cursor: "pointer",
-  transition: "all 0.2s ease",
-
-  // ":hover": {
-  //   backgroundColor: colors.status.purpleDark,
-  //   transform: "translateY(-2px)",
-  // },
-});

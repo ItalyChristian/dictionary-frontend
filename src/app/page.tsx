@@ -12,6 +12,7 @@ import { WordList } from "@/components/WordsLists";
 import { Pagination } from "@/components/Pagination";
 import { PageLoading } from "@/templates/Loading";
 import * as styles from "./page.css";
+import { PageError } from "@/templates/Error";
 
 export default function Home() {
   const [selectedWord, setSelectedWord] = useState<string | undefined>();
@@ -31,30 +32,11 @@ export default function Home() {
   } = useEntries(20);
 
   if (isLoading && entries.length === 0) {
-    return (
-      <MainLayout>
-        <PageLoading />
-      </MainLayout>
-    );
+    return <PageLoading />;
   }
 
   if (error) {
-    return (
-      <MainLayout>
-        <div className={clsx(flexColumn)} style={{ gap: "1rem" }}>
-          <Header />
-          <section className={clsx(glassCard, styles.errorSection)}>
-            <div className={styles.errorContainer}>
-              <h2>Something went wrong</h2>
-              <p>{error}</p>
-              <button onClick={refetch} className={styles.retryButton}>
-                Try Again
-              </button>
-            </div>
-          </section>
-        </div>
-      </MainLayout>
-    );
+    return <PageError error={error} refetch={refetch} />;
   }
 
   return (
@@ -63,7 +45,6 @@ export default function Home() {
         <Header />
 
         <section className={clsx(glassCard, styles.section)}>
-          {/* Search Bar */}
           <SearchBar
             value={searchTerm}
             onChange={setSearchTerm}
