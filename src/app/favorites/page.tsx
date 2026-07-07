@@ -27,19 +27,23 @@ export default function Favorites() {
     prevPage,
   } = useFavorites(page, 10);
 
+  const pageTitle = "Favorites";
+
   if (isLoading) {
-    return <Favorite.Loading />;
+    return (
+      <Favorite.Loading title={pageTitle} message="Loading favorites..." />
+    );
   }
 
   if (error) {
-    return <Favorite.Error error={error} />;
+    return <Favorite.Error title={pageTitle} error={error} />;
   }
 
   return (
     <MainLayout>
       <div className={clsx(flexColumn)} style={{ gap: "1rem" }}>
         <header className={clsx(glass, styles.header)}>
-          <h1 className={styles.title}>Favorites</h1>
+          <h1 className={styles.title}>{pageTitle}</h1>
           <span className={styles.count}>{totalDocs} words</span>
         </header>
 
