@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { toast } from "react-toastify";
 import { addFavorite, removeFavorite } from "@/actions/favorites/favorites";
 import { UseFavoriteStatusReturn } from "./types";
 
@@ -15,7 +16,9 @@ export function useFavoriteStatus(
       await addFavorite(word);
       setIsFavorite(true);
     } catch (error) {
-      console.error("Error adding favorite:", error);
+      const message =
+        error instanceof Error ? error.message : "Failed to add favorite";
+      toast.error(message);
       throw error;
     } finally {
       setIsLoading(false);
@@ -28,7 +31,9 @@ export function useFavoriteStatus(
       await removeFavorite(word);
       setIsFavorite(false);
     } catch (error) {
-      console.error("Error removing favorite:", error);
+      const message =
+        error instanceof Error ? error.message : "Failed to remove favorite";
+      toast.error(message);
       throw error;
     } finally {
       setIsLoading(false);

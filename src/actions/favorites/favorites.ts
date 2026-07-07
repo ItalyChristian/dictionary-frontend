@@ -25,7 +25,6 @@ export async function getFavorites(
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Error fetching favorites:", error);
     throw error;
   }
 }

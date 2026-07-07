@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import {
   getFavorites,
   removeFavorite,
@@ -92,9 +93,10 @@ export function useFavorites(
         totalDocs: prev.totalDocs - 1,
       }));
     } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Failed to remove favorite",
-      );
+      const message =
+        err instanceof Error ? err.message : "Failed to remove favorite";
+      setError(message);
+      toast.error(message);
       throw err;
     }
   }, []);
@@ -106,7 +108,9 @@ export function useFavorites(
 
         await fetchFavorites(pagination.currentPage);
       } catch (err) {
-        console.error("Error adding favorite:", err);
+        const message =
+          err instanceof Error ? err.message : "Failed to add favorite";
+        toast.error(message);
         throw err;
       }
     },
