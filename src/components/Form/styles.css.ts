@@ -9,7 +9,7 @@ import {
 
 export const label = style({
   fontSize: typography.fontSize.lg,
-  color: "rgba(255, 255, 255, 0.6)",
+  color: colors.status.success,
   fontWeight: typography.fontWeight.medium,
 });
 
@@ -49,8 +49,8 @@ export const errorMessage = style({
 });
 
 export const input = style({
-  border: "1px solid rgba(167,139,250,0.2)",
-  borderRadius: radii.lg,
+  border: `1px solid ${colors.status.success}`,
+  borderRadius: radii.md,
   padding: spacing.lg,
 });
 
@@ -68,7 +68,7 @@ globalStyle(`${input} input`, {
 });
 
 globalStyle(`${input} input::placeholder`, {
-  color: colors.text.inverse,
+  color: "rgba(255, 255, 255, 0.4)",
   opacity: 0.7,
 });
 

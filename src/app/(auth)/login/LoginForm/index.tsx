@@ -3,19 +3,13 @@
 import { useActionState, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { TextField } from "@radix-ui/themes";
-
-import { glass } from "@/styles/components/glass.css";
+import { Eye, EyeClosed } from "lucide-react";
+import * as styles from "./styles.css";
+import { glass, glassCard } from "@/styles/components/glass.css";
 import { Form } from "@/components/Form";
 import { input } from "@/components/Form/styles.css";
 import { loginAction } from "@/api/auth/auth";
-import * as styles from "./styles.css";
-import { EyeClosedIcon, EyeDashedIcon } from "lucide-react";
-
-const initialState = {
-  error: "",
-  success: false,
-  redirectTo: "",
-};
+import { initialState } from "./types";
 
 export function LoginForm() {
   const router = useRouter();
@@ -33,7 +27,7 @@ export function LoginForm() {
   }, [state, router]);
 
   return (
-    <div className={`${glass} ${styles.wrapper}`}>
+    <div className={`${glassCard} ${styles.wrapper}`}>
       <Form.Form action={formAction} noValidate>
         <Form.FieldGroup>
           <Form.Label htmlFor="email" text="E-mail" />
@@ -70,9 +64,9 @@ export function LoginForm() {
               aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
             >
               {showPassword ? (
-                <EyeClosedIcon height="16" width="16" />
+                <EyeClosed height="16" width="16" />
               ) : (
-                <EyeDashedIcon height="16" width="16" />
+                <Eye height="16" width="16" />
               )}
             </TextField.Slot>
           </TextField.Root>
@@ -80,13 +74,16 @@ export function LoginForm() {
 
         {state?.error && <Form.CardError message={state.error} />}
 
-        <button type="submit" disabled={isPending}>
+        <button className={styles.button} type="submit" disabled={isPending}>
           {isPending ? "Redirecting..." : "Login"}
         </button>
 
         <div className={styles.footerLinks}>
           <a href="#" className={styles.link}>
             Forgot your password?
+          </a>
+          <a href="/register" className={styles.link}>
+            Not registered yet? Create an account
           </a>
         </div>
       </Form.Form>
