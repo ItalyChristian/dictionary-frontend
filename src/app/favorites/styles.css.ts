@@ -22,7 +22,8 @@ export const title = style({
 export const count = style({
   color: colors.text.secondary,
   fontSize: typography.fontSize.base,
-  padding: `${spacing.xs} ${spacing.md}`,
+
+  padding: spacing.sm,
   borderRadius: radii.sm,
   backgroundColor: colors.background.glassActive,
 });

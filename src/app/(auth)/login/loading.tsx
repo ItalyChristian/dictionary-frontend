@@ -9,7 +9,7 @@ export default function LoginLoading() {
       <h1>Don't worry, we're getting everything ready for you...</h1>
       <Image
         src={assistantVector}
-        alt="Virtual assistant Helena"
+        alt="Virtual assistant Helena waving"
         className={loadingimage}
         sizes="(max-width: 1024px) 0px, 50vw"
       />

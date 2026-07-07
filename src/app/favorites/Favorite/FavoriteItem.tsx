@@ -22,6 +22,7 @@ export function FavoriteItem({
         <h3 className={styles.word}>{favorite.word}</h3>
         <span className={styles.date}>Added: {formattedDate}</span>
       </div>
+
       <button
         onClick={() => onRemove(favorite.word)}
         className={styles.removeButton}
