@@ -1,11 +1,12 @@
 "use server";
 
-import { FavoritesResponse, FavoritesQueryParams } from "@/types/favorites";
+import { FavoritesResponse } from "@/types/favorites";
+import { QueryParams } from "@/types/pagination";
 import { API_BASE_URL } from "@/utils/constants";
 import { getAuthHeaders } from "@/utils/getAuthHeaders";
 
 export async function getFavorites(
-  params: FavoritesQueryParams = {},
+  params: QueryParams = {},
 ): Promise<FavoritesResponse> {
   const { page = 1, limit = 10 } = params;
 
