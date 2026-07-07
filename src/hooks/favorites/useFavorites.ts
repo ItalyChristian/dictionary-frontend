@@ -45,7 +45,7 @@ export function useFavorites(
         });
       } catch (err) {
         setError(
-          err instanceof Error ? err.message : "Failed to fetch favorites",
+          err instanceof Error ? err.message : "Failed to load favorites",
         );
       } finally {
         setIsLoading(false);
