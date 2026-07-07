@@ -15,8 +15,12 @@ export function Pagination({
   totalItems,
   itemsPerPage = 10,
   className,
+  isLoading = false,
+  mode = "numeric",
 }: PaginationProps) {
   const pageNumbers = useMemo(() => {
+    if (currentPage === undefined || totalPages === undefined) return [];
+
     const pages: (number | string)[] = [];
     const maxVisible = 5;
     const halfVisible = Math.floor(maxVisible / 2);
@@ -55,13 +59,48 @@ export function Pagination({
     return pages;
   }, [currentPage, totalPages]);
 
-  if (totalPages <= 1) return null;
+  const isCursorMode =
+    mode === "cursor" || currentPage === undefined || totalPages === undefined;
+
+  if (isCursorMode) {
+    if (!hasNext && !hasPrev) return null;
+
+    return (
+      <div className={clsx(styles.pagination, className)}>
+        <button
+          onClick={onPrev}
+          disabled={!hasPrev || isLoading}
+          className={styles.button}
+          aria-label="Previous page"
+        >
+          <MoveLeft /> Previous
+        </button>
+
+        {totalItems !== undefined && (
+          <span className={styles.info}>
+            {totalItems.toLocaleString()} words total
+          </span>
+        )}
+
+        <button
+          onClick={onNext}
+          disabled={!hasNext || isLoading}
+          className={styles.button}
+          aria-label="Next page"
+        >
+          Next <MoveRight />
+        </button>
+      </div>
+    );
+  }
+
+  if ((totalPages ?? 1) <= 1) return null;
 
   return (
     <div className={clsx(styles.pagination, className)}>
       <button
         onClick={onPrev}
-        disabled={!hasPrev}
+        disabled={!hasPrev || isLoading}
         className={styles.button}
         aria-label="Previous page"
       >
@@ -72,12 +111,12 @@ export function Pagination({
         {pageNumbers.map((page, index) => (
           <button
             key={index}
-            onClick={() => typeof page === "number" && onPageChange(page)}
+            onClick={() => typeof page === "number" && onPageChange?.(page)}
             className={clsx(styles.pageButton, {
               [styles.active]: page === currentPage,
               [styles.dots]: page === "...",
             })}
-            disabled={page === "..."}
+            disabled={page === "..." || isLoading}
             aria-current={page === currentPage ? "page" : undefined}
           >
             {page}
@@ -87,7 +126,7 @@ export function Pagination({
 
       <button
         onClick={onNext}
-        disabled={!hasNext}
+        disabled={!hasNext || isLoading}
         className={styles.button}
         aria-label="Next page"
       >
@@ -98,8 +137,9 @@ export function Pagination({
         <div className={styles.info}>
           {itemsPerPage > 0 && (
             <span>
-              {(currentPage - 1) * itemsPerPage + 1} -{" "}
-              {Math.min(currentPage * itemsPerPage, totalItems)} of {totalItems}
+              {(currentPage! - 1) * itemsPerPage + 1} -
+              {Math.min(currentPage! * itemsPerPage, totalItems)} of
+              {totalItems}
             </span>
           )}
         </div>

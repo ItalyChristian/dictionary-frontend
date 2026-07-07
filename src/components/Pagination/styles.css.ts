@@ -73,7 +73,7 @@ export const pageButton = style({
 });
 
 export const active = style({
-  backgroundColor: colors.status.success,
+  backgroundColor: colors.border.green,
   border: `1px solid ${colors.border.purple}`,
   color: colors.text.primary,
   fontWeight: "bold",

@@ -6,8 +6,3 @@ export interface Favorite {
 }
 
 export type FavoritesResponse = PaginatedResponse<Favorite>;
-
-export interface FavoritesQueryParams {
-  page?: number;
-  limit?: number;
-}
