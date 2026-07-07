@@ -22,7 +22,7 @@ export const letterHeader = style({
   color: colors.status.purple,
   margin: 0,
   paddingBottom: spacing.xs,
-  borderBottom: `2px solid ${colors.border.purple}`,
+  borderBottom: `2px solid ${colors.border.green}`,
 });
 
 export const wordsGrid = style({

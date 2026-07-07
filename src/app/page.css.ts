@@ -14,7 +14,7 @@ export const section = style({
 export const pagination = style({
   marginTop: "auto",
   paddingTop: spacing["2xl"],
-  borderTop: `1px solid ${colors.border.medium}`,
+  borderTop: `1px solid ${colors.border.green}`,
 });
 
 export const empty = style({

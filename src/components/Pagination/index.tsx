@@ -59,7 +59,8 @@ export function Pagination({
     return pages;
   }, [currentPage, totalPages]);
 
-  const isCursorMode = mode === "cursor" || currentPage === undefined || totalPages === undefined;
+  const isCursorMode =
+    mode === "cursor" || currentPage === undefined || totalPages === undefined;
 
   if (isCursorMode) {
     if (!hasNext && !hasPrev) return null;
@@ -76,7 +77,9 @@ export function Pagination({
         </button>
 
         {totalItems !== undefined && (
-          <span className={styles.info}>{totalItems.toLocaleString()} words total</span>
+          <span className={styles.info}>
+            {totalItems.toLocaleString()} words total
+          </span>
         )}
 
         <button
@@ -134,8 +137,9 @@ export function Pagination({
         <div className={styles.info}>
           {itemsPerPage > 0 && (
             <span>
-              {(currentPage! - 1) * itemsPerPage + 1} - {" "}
-              {Math.min(currentPage! * itemsPerPage, totalItems)} of {totalItems}
+              {(currentPage! - 1) * itemsPerPage + 1} -
+              {Math.min(currentPage! * itemsPerPage, totalItems)} of
+              {totalItems}
             </span>
           )}
         </div>
