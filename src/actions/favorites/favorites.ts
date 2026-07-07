@@ -32,7 +32,7 @@ export async function getFavorites(
 
 export async function addFavorite(word: string): Promise<void> {
   try {
-    const url = `${API_BASE_URL}/entries/en/${word}/favorite`;
+    const url = `${API_BASE_URL}/entries/en/${encodeURIComponent(word)}/favorite`;
     const headers = await getAuthHeaders();
 
     const response = await fetch(url, {
@@ -52,8 +52,10 @@ export async function addFavorite(word: string): Promise<void> {
 
 export async function removeFavorite(word: string): Promise<void> {
   try {
-    const url = `${API_BASE_URL}/entries/en/${word}/unfavorite`;
-    const headers = await getAuthHeaders();
+    const url = `${API_BASE_URL}/entries/en/${encodeURIComponent(word)}/unfavorite`;
+
+    const headers = new Headers(await getAuthHeaders());
+    headers.delete("Content-Type");
 
     const response = await fetch(url, {
       method: "DELETE",
@@ -62,7 +64,11 @@ export async function removeFavorite(word: string): Promise<void> {
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to remove favorite: ${response.status}`);
+      const responseText = await response.text();
+
+      throw new Error(
+        `Failed to remove favorite: ${response.status} ${responseText}`,
+      );
     }
   } catch (error) {
     console.error("Error removing favorite:", error);

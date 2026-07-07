@@ -46,7 +46,6 @@ export function useFavorites(
         setError(
           err instanceof Error ? err.message : "Failed to fetch favorites",
         );
-        console.error("Error in useFavorites:", err);
       } finally {
         setIsLoading(false);
       }
@@ -93,7 +92,9 @@ export function useFavorites(
         totalDocs: prev.totalDocs - 1,
       }));
     } catch (err) {
-      console.error("Error removing favorite:", err);
+      setError(
+        err instanceof Error ? err.message : "Failed to remove favorite",
+      );
       throw err;
     }
   }, []);
