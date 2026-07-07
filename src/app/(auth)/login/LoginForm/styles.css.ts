@@ -4,8 +4,6 @@ import { typography } from "@/styles/tokens/typography.css";
 import { flexColumnCenter } from "@/styles/components/gridSystem.css";
 import { radii, spacing } from "@/styles/tokens/spacing.css";
 
-export const wrapper = style([flexColumnCenter, { padding: "3rem" }]);
-
 export const passwordWrapper = style({
   width: "100%",
   position: "relative",
@@ -45,17 +43,43 @@ export const link = style({
 });
 
 export const button = style({
-  background: "rgba(167,139,250,0.12)",
+  width: "100%",
+  padding: spacing.md,
+
+  fontSize: typography.fontSize.lg,
+  fontWeight: typography.fontWeight.semibold,
+  letterSpacing: typography.letterSpacing.widest,
   color: colors.text.inverse,
-  border: "1px solid rgba(167,139,250,0.2)",
-  padding: "10px 14px",
-  borderRadius: radii.lg,
+
+  background: "linear-gradient(135deg, #6200F2 0%, #8a4dff 50%, #6BFF69 100%)",
+  backgroundSize: "200% 200%",
+  boxShadow: "0 6px 20px rgba(98, 0, 242, 0.35)",
+  border: "none",
+  borderRadius: radii.sm,
+
   cursor: "pointer",
-  transition: "all 0.25s ease",
+  transition: " all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+
+  position: "relative",
+  overflow: "hidden",
+
   selectors: {
+    "&::before": {
+      content: "",
+      position: "absolute",
+      inset: 0,
+      borderRadius: "inherit",
+      background:
+        "linear-gradient(135deg, #6BFF69 0%, #8a4dff 50%, #6200F2 100%)",
+      backgroundSize: "200% 200%",
+      opacity: 0,
+      transition: "opacity 0.5s ease",
+    },
     "&:hover": {
-      background: "rgba(167,139,250,0.2)",
-      borderColor: "rgba(167,139,250,0.3)",
+      transform: "translateY(-2px) scale(1.01)",
+      boxShadow:
+        "0 10px 30px rgba(98, 0, 242, 0.4), 0 0 40px rgba(107, 255, 105, 0.1)",
+      backgroundPosition: "100% 100%",
     },
   },
 });

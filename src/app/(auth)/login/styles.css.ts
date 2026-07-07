@@ -9,8 +9,13 @@ export const wrapper = style([
   { width: "100%", minHeight: "100vh", gap: spacing.md },
 ]);
 
+export const content = style([
+  flexColumnCenter,
+  { minWidth: "28rem", minHeight: "90vh", gap: spacing.lg },
+]);
+
 export const title = style({
   fontSize: typography.fontSize["4xl"],
   fontWeight: typography.fontWeight.bold,
-  color: colors.status.purple,
+  color: colors.text.primary,
 });

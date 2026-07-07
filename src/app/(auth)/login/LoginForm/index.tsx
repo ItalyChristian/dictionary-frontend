@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { TextField } from "@radix-ui/themes";
 import { Eye, EyeClosed } from "lucide-react";
 import * as styles from "./styles.css";
-import { glass, glassCard } from "@/styles/components/glass.css";
 import { Form } from "@/components/Form";
 import { input } from "@/components/Form/styles.css";
 import { loginAction } from "@/api/auth/auth";
@@ -27,66 +26,64 @@ export function LoginForm() {
   }, [state, router]);
 
   return (
-    <div className={`${glassCard} ${styles.wrapper}`}>
-      <Form.Form action={formAction} noValidate>
-        <Form.FieldGroup>
-          <Form.Label htmlFor="email" text="E-mail" />
-          <TextField.Root
-            id="email"
-            name="email"
-            type="email"
-            className={input}
-            size="2"
-            placeholder="Insert your e-mail"
-            autoComplete="email"
-            disabled={isPending}
-            required
-          />
-        </Form.FieldGroup>
+    <Form.Form action={formAction} noValidate>
+      <Form.FieldGroup>
+        <Form.Label htmlFor="email" text="E-mail" />
+        <TextField.Root
+          id="email"
+          name="email"
+          type="email"
+          className={input}
+          size="2"
+          placeholder="Insert your e-mail"
+          autoComplete="email"
+          disabled={isPending}
+          required
+        />
+      </Form.FieldGroup>
 
-        <Form.FieldGroup>
-          <Form.Label htmlFor="password" text="Senha" />
+      <Form.FieldGroup>
+        <Form.Label htmlFor="password" text="Senha" />
 
-          <TextField.Root
-            id="password"
-            name="password"
-            type={showPassword ? "text" : "password"}
-            className={input}
-            size="2"
-            placeholder="Insert your password"
-            autoComplete="current-password"
-            disabled={isPending}
-            required
+        <TextField.Root
+          id="password"
+          name="password"
+          type={showPassword ? "text" : "password"}
+          className={input}
+          size="2"
+          placeholder="Insert your password"
+          autoComplete="current-password"
+          disabled={isPending}
+          required
+        >
+          <TextField.Slot
+            className={styles.passwordIcon}
+            onClick={() => setShowPassword(!showPassword)}
+            aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
           >
-            <TextField.Slot
-              className={styles.passwordIcon}
-              onClick={() => setShowPassword(!showPassword)}
-              aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
-            >
-              {showPassword ? (
-                <EyeClosed height="16" width="16" />
-              ) : (
-                <Eye height="16" width="16" />
-              )}
-            </TextField.Slot>
-          </TextField.Root>
-        </Form.FieldGroup>
+            {showPassword ? (
+              <EyeClosed height="16" width="16" />
+            ) : (
+              <Eye height="16" width="16" />
+            )}
+          </TextField.Slot>
+        </TextField.Root>
+      </Form.FieldGroup>
 
-        {state?.error && <Form.CardError message={state.error} />}
+      {state?.error && <Form.CardError message={state.error} />}
 
-        <button className={styles.button} type="submit" disabled={isPending}>
-          {isPending ? "Redirecting..." : "Login"}
-        </button>
+      <button className={styles.button} type="submit" disabled={isPending}>
+        {isPending ? "Redirecting..." : "LOGIN"}
+      </button>
 
-        <div className={styles.footerLinks}>
-          <a href="#" className={styles.link}>
-            Forgot your password?
-          </a>
-          <a href="/register" className={styles.link}>
-            Not registered yet? Create an account
-          </a>
-        </div>
-      </Form.Form>
-    </div>
+      <div className={styles.footerLinks}>
+        <a href="#" className={styles.link}>
+          Forgot your password?
+        </a>
+        <a href="/register" className={styles.link}>
+          Not registered yet? Create an account
+        </a>
+      </div>
+    </Form.Form>
   );
 }

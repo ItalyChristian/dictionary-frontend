@@ -2,6 +2,8 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { LoginForm } from "./LoginForm";
 import * as styles from "./styles.css";
+import { glassCard } from "@/styles/components/glass.css";
+import { flexColumnCenter } from "@/styles/components/gridSystem.css";
 
 export default async function LoginPage() {
   const cookieStore = await cookies();
@@ -13,9 +15,14 @@ export default async function LoginPage() {
 
   return (
     <div className={styles.wrapper}>
-      <h1 className={styles.title}>Login</h1>
+      <div className={`${glassCard} ${styles.content}`}>
+        <div className={flexColumnCenter}>
+          <h1 className={styles.title}>Welcome back!</h1>
+          <p>Log in to your account</p>
+        </div>
 
-      <LoginForm />
+        <LoginForm />
+      </div>
     </div>
   );
 }
