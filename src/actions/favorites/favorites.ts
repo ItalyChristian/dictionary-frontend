@@ -16,7 +16,6 @@ export async function getFavorites(
     const response = await fetch(url, {
       headers,
       cache: "no-store",
-      next: { tags: ["categories"] },
     });
 
     if (!response.ok) {
@@ -40,7 +39,6 @@ export async function addFavorite(word: string): Promise<void> {
       method: "POST",
       headers,
       cache: "no-store",
-      next: { tags: ["categories"] },
     });
 
     if (!response.ok) {
@@ -61,7 +59,6 @@ export async function removeFavorite(word: string): Promise<void> {
       method: "DELETE",
       headers,
       cache: "no-store",
-      next: { tags: ["categories"] },
     });
 
     if (!response.ok) {
