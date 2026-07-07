@@ -4,6 +4,7 @@ export interface UseHistoryReturn {
   history: History[];
   isLoading: boolean;
   error: string | null;
+
   totalDocs: number;
   totalPages: number;
   currentPage: number;

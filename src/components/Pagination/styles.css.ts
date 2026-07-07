@@ -1,6 +1,7 @@
 import { style } from "@vanilla-extract/css";
 import { colors } from "@/styles/tokens/colors.css";
-import { spacing } from "@/styles/tokens/spacing.css";
+import { radii, spacing } from "@/styles/tokens/spacing.css";
+import { typography } from "@/styles/tokens/typography.css";
 
 export const pagination = style({
   display: "flex",
@@ -18,33 +19,34 @@ export const pageNumbers = style({
 });
 
 export const button = style({
-  padding: "0.5rem 1rem",
+  display: "flex",
+  alignItems: "center",
+  gap: "0.5rem",
+  padding: spacing.sm,
 
-  color: colors.text.primary, //heme.colors.text
+  color: colors.text.primary,
   fontSize: "0.875rem",
 
   borderRadius: "0.375rem",
   border: "1px solid",
-  borderColor: colors.border.purple, //theme.colors.border
+  borderColor: colors.border.purple,
   backgroundColor: "transparent",
 
   cursor: "pointer",
   transition: "all 0.2s ease",
 
-  // selectors: {
-  //   "&:hover": {
-  //     backgroundColor: theme.colors.primary,
-  //     color: "white",
-  //     borderColor: theme.colors.primary,
-  //   },
-  //   "&:disabled": {
-  //     opacity: 0.5,
-  //     cursor: "not-allowed",
-  //     backgroundColor: "transparent",
-  //     color: theme.colors.text,
-  //     borderColor: theme.colors.border,
-  //   },
-  // },
+  selectors: {
+    "&:hover": {
+      backgroundColor: colors.background.glassActive,
+      borderColor: colors.border.focus,
+    },
+    "&:disabled": {
+      opacity: 0.5,
+      cursor: "not-allowed",
+      backgroundColor: "transparent",
+      color: colors.text.muted,
+    },
+  },
 });
 
 export const pageButton = style({
@@ -61,22 +63,19 @@ export const pageButton = style({
   cursor: "pointer",
   transition: "all 0.2s ease",
 
-  // ":hover": {
-  //   backgroundColor: theme.colors.primary,
-  //   color: "white",
-  // },
-  // ":disabled": {
-  //   cursor: "not-allowed",
-  //   ":hover": {
-  //     backgroundColor: "transparent",
-  //     color: theme.colors.text,
-  //   },
-  // },
+  selectors: {
+    "&:disabled": {
+      opacity: 0.5,
+      cursor: "not-allowed",
+      color: colors.text.muted,
+    },
+  },
 });
 
 export const active = style({
-  backgroundColor: colors.status.success, //theme.colors.primary
-  color: "white",
+  backgroundColor: colors.status.success,
+  border: `1px solid ${colors.border.purple}`,
+  color: colors.text.primary,
   fontWeight: "bold",
 });
 
@@ -89,9 +88,10 @@ export const dots = style({
 });
 
 export const info = style({
-  color: colors.status.info,
-  fontSize: "0.875rem",
-  padding: "0.5rem 0.75rem",
-  borderRadius: "0.375rem",
-  backgroundColor: colors.background.secondary, //theme.colors.backgroundSecondary
+  color: colors.text.secondary,
+  fontSize: typography.fontSize.base,
+
+  padding: spacing.sm,
+  borderRadius: radii.sm,
+  backgroundColor: colors.background.glassActive,
 });
