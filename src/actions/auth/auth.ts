@@ -3,12 +3,44 @@
 import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { API_BASE_URL } from "@/utils/constants";
-import { loginSchema } from "./schema";
+import { loginSchema, registerSchema } from "./schema";
 import {
   checkRateLimit,
   incrementLoginAttempts,
   resetLoginAttempts,
 } from "@/utils/resetLoginAttempts";
+
+async function storeAuthSession(data: {
+  id: string;
+  name: string;
+  token: string;
+}) {
+  const cookieStore = await cookies();
+
+  cookieStore.set("auth_token", data.token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    maxAge: 60 * 60 * 24 * 7,
+    path: "/",
+    priority: "high",
+  });
+
+  cookieStore.set(
+    "user_data",
+    JSON.stringify({
+      id: data.id,
+      name: data.name,
+    }),
+    {
+      httpOnly: false,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 60 * 60 * 24 * 7,
+      path: "/",
+    },
+  );
+}
 
 export async function loginAction(
   prevState: { error?: string; success?: boolean; redirectTo?: string } | null,
@@ -66,31 +98,7 @@ export async function loginAction(
 
     resetLoginAttempts(email);
 
-    const cookieStore = await cookies();
-
-    cookieStore.set("auth_token", data.token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: 60 * 60 * 24 * 7,
-      path: "/",
-      priority: "high",
-    });
-
-    cookieStore.set(
-      "user_data",
-      JSON.stringify({
-        id: data.id,
-        name: data.name,
-      }),
-      {
-        httpOnly: false,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
-        maxAge: 60 * 60 * 24 * 7,
-        path: "/",
-      },
-    );
+    await storeAuthSession(data);
 
     revalidatePath("/");
 
@@ -100,6 +108,70 @@ export async function loginAction(
     };
   } catch (error) {
     console.error("Erro on loginAction:", error);
+    return {
+      error: "Internal error. Try again later.",
+    };
+  }
+}
+
+export async function registerAction(
+  prevState: { error?: string; success?: boolean; redirectTo?: string } | null,
+  formData: FormData,
+): Promise<{ error?: string; success?: boolean; redirectTo?: string }> {
+  try {
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+
+    const validated = registerSchema.safeParse({ name, email, password });
+
+    if (!validated.success) {
+      return {
+        error: validated.error.issues.map((e) => e.message).join(", "),
+      };
+    }
+
+    const response = await fetch(`${API_BASE_URL}/auth/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name.trim(),
+        email: email.trim().toLowerCase(),
+        password,
+      }),
+    });
+
+    if (!response.ok) {
+      let errorMessage = "Error creating account. Please try again.";
+
+      try {
+        const errorData = await response.json();
+        if (errorData?.message) {
+          errorMessage = errorData.message;
+        }
+      } catch {}
+
+      return { error: errorMessage };
+    }
+
+    const data = await response.json();
+
+    if (!data.token) {
+      return { error: "Token is required." };
+    }
+
+    await storeAuthSession(data);
+
+    revalidatePath("/");
+
+    return {
+      success: true,
+      redirectTo: "/",
+    };
+  } catch (error) {
+    console.error("Erro on registerAction:", error);
     return {
       error: "Internal error. Try again later.",
     };

@@ -7,7 +7,7 @@ import { Eye, EyeClosed } from "lucide-react";
 import * as styles from "./styles.css";
 import { Form } from "@/components/Form";
 import { input } from "@/components/Form/styles.css";
-import { loginAction } from "@/actions/auth/auth";
+import { registerAction } from "@/actions/auth/auth";
 import { initialState } from "./types";
 
 export function RegisterForm() {
@@ -15,7 +15,7 @@ export function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   const [state, formAction, isPending] = useActionState(
-    loginAction,
+    registerAction,
     initialState,
   );
 
