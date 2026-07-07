@@ -1,6 +1,5 @@
 import { globalStyle, keyframes } from "@vanilla-extract/css";
 import { colors } from "./tokens/colors.css";
-import { spacing, radii } from "./tokens/spacing.css";
 import { typography } from "./tokens/typography.css";
 
 export const fadeUp = keyframes({
@@ -15,38 +14,10 @@ globalStyle("*", {
 });
 
 globalStyle("html, body", {
-  fontFamily: typography.fontFamily.body,
   minHeight: "100vh",
-  background: "radial-gradient(circle at 10% 30%, #d9c4ff, #9f7aea)",
   color: colors.text.primary,
-  // padding: spacing.xl,
-  // display: 'flex',
-  // alignItems: 'center',
-  // justifyContent: 'center',
-
-  // "@media": {
-  //   "screen and (max-width: 43.75rem)": {
-  //     padding: spacing.lg,
-  //   },
-  // },
-});
-
-globalStyle("::-webkit-scrollbar", {
-  width: "0.375rem",
-});
-
-globalStyle("::-webkit-scrollbar-track", {
-  background: colors.background.glass,
-  borderRadius: radii.lg,
-});
-
-globalStyle("::-webkit-scrollbar-thumb", {
-  background: "rgba(255, 255, 255, 0.15)",
-  borderRadius: radii.lg,
-});
-
-globalStyle("::-webkit-scrollbar-thumb:hover", {
-  background: "rgba(255, 255, 255, 0.25)",
+  fontFamily: typography.fontFamily.body,
+  background: "radial-gradient(circle at 10% 30%, #d9c4ff, #9f7aea)",
 });
 
 globalStyle("::selection", {
