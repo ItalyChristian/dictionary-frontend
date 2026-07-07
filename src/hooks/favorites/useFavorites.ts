@@ -92,6 +92,7 @@ export function useFavorites(
         ...prev,
         totalDocs: prev.totalDocs - 1,
       }));
+      toast.success(`"${word}" removed from favorites.`);
     } catch (err) {
       const message =
         err instanceof Error ? err.message : "Failed to remove favorite";

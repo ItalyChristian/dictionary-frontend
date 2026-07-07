@@ -33,11 +33,6 @@ export async function removeFavorite(word: string): Promise<void> {
   try {
     await httpClient.delete(
       `/entries/en/${encodeURIComponent(word)}/unfavorite`,
-      {
-        headers: {
-          "Content-Type": undefined,
-        },
-      },
     );
   } catch (error) {
     console.error("Error removing favorite:", error);

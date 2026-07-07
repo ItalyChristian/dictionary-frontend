@@ -2,6 +2,7 @@ import axios, { AxiosHeaders } from "axios";
 
 import { API_BASE_URL } from "@/utils/constants";
 import { getAuthHeaders } from "@/utils/getAuthHeaders";
+import { handleApiError } from "@/utils/handleApiError";
 
 const httpClient = axios.create({
   baseURL: API_BASE_URL,
@@ -30,5 +31,18 @@ httpClient.interceptors.request.use(async (config) => {
 
   return config;
 });
+
+httpClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const { error: message, status } = handleApiError(error);
+
+    return Promise.reject(
+      Object.assign(new Error(message), {
+        status,
+      }),
+    );
+  },
+);
 
 export default httpClient;
