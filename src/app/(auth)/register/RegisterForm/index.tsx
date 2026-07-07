@@ -10,7 +10,7 @@ import { input } from "@/components/Form/styles.css";
 import { loginAction } from "@/actions/auth/auth";
 import { initialState } from "./types";
 
-export function LoginForm() {
+export function RegisterForm() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -26,7 +26,21 @@ export function LoginForm() {
   }, [state, router]);
 
   return (
-    <Form.Form action={formAction} noValidate>
+    <Form.Form action={formAction} style={{ width: "100%" }} noValidate>
+      <Form.FieldGroup>
+        <Form.Label htmlFor="name" text="Name" />
+        <TextField.Root
+          id="name"
+          name="name"
+          type="text"
+          className={input}
+          size="2"
+          placeholder="Insert your name"
+          disabled={isPending}
+          required
+        />
+      </Form.FieldGroup>
+
       <Form.FieldGroup>
         <Form.Label htmlFor="email" text="E-mail" />
         <TextField.Root
@@ -51,7 +65,7 @@ export function LoginForm() {
           type={showPassword ? "text" : "password"}
           className={input}
           size="2"
-          placeholder="Insert your password"
+          placeholder="Create your password"
           autoComplete="current-password"
           disabled={isPending}
           required
@@ -73,17 +87,8 @@ export function LoginForm() {
       {state?.error && <Form.CardError message={state.error} />}
 
       <button className={styles.button} type="submit" disabled={isPending}>
-        {isPending ? "Redirecting..." : "LOGIN"}
+        {isPending ? "Redirecting..." : "Create account"}
       </button>
-
-      <div className={styles.footerLinks}>
-        <div className={styles.divider} />
-
-        <a href="/register" className={styles.link}>
-          Not registered yet?{" "}
-          <span className={styles.linkHighlight}>Create an account</span>
-        </a>
-      </div>
     </Form.Form>
   );
 }
