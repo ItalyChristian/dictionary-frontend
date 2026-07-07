@@ -29,7 +29,7 @@ export const count = style({
 });
 
 export const section = style({
-  minHeight: "400px",
+  minHeight: "calc(80vh - 1rem)",
   padding: spacing["2xl"],
 });
 
