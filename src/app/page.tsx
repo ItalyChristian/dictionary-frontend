@@ -9,7 +9,7 @@ import { flexColumn } from "@/styles/components/gridSystem.css";
 import { useEntries } from "@/hooks/entries/useEntries";
 import { SearchBar } from "@/components/SearchBar";
 import { WordList } from "@/components/WordsLists";
-import { PaginationCursor } from "@/components/PaginationCursor";
+import { Pagination } from "@/components/Pagination";
 import { PageLoading } from "@/templates/Loading";
 import * as styles from "./page.css";
 
@@ -80,7 +80,7 @@ export default function Home() {
                 selectedWord={selectedWord}
               />
 
-              <PaginationCursor
+              <Pagination
                 hasNext={hasNext}
                 hasPrev={hasPrev}
                 onNext={loadNext}
@@ -88,6 +88,7 @@ export default function Home() {
                 isLoading={isLoading}
                 totalItems={totalDocs}
                 className={styles.pagination}
+                mode="cursor"
               />
             </>
           ) : (
