@@ -1,4 +1,4 @@
-import { fieldError } from './styles.css';
+import { fieldError } from "./styles.css";
 
 type FieldErrorProps = {
   message: string | undefined;

@@ -29,7 +29,7 @@ export const passwordIcon = style({
   paddingRight: "0.5rem",
 
   ":hover": {
-    color: colors.text.inverse,
+    color: colors.status.purple,
   },
 });
 

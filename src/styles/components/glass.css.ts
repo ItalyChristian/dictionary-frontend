@@ -19,7 +19,7 @@ export const glassCard = style({
   WebkitBackdropFilter: "blur(20px) saturate(180%)",
   borderRadius: radii.sm,
   padding: `${spacing["5xl"]} ${spacing["4xl"]}`,
-  border: "1px solid rgba(255, 255, 255, 0.35)",
+  border: `1px solid ${colors.border.medium}`,
   boxShadow:
     "0 25px 50px -8px rgba(98, 0, 242, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.4)",
   transition: "all 0.3s ease",
