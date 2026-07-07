@@ -32,8 +32,9 @@ export const fieldGroup = style([
 ]);
 
 export const fieldError = style({
+  color: colors.status.errorSecondary,
   fontSize: typography.fontSize.xs,
-  color: colors.status.error,
+  fontWeight: typography.fontWeight.bold,
   marginTop: spacing.xs,
 });
 
@@ -43,9 +44,9 @@ export const errorMessage = style({
   gap: spacing.sm,
   padding: spacing.md,
   background: "rgba(248, 113, 113, 0.1)",
-  border: `1px solid ${colors.status.error}`,
+  border: `1px solid ${colors.status.errorSecondary}`,
   borderRadius: radii.lg,
-  color: colors.status.error,
+  color: colors.status.errorSecondary,
   fontSize: typography.fontSize.sm,
 });
 

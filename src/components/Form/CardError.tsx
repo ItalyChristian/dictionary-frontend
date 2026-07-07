@@ -1,5 +1,6 @@
-import { TriangleAlert } from 'lucide-react';
-import { errorMessage } from './styles.css';
+import { TriangleAlert } from "lucide-react";
+import { errorMessage } from "./styles.css";
+import { FieldError } from "./FieldError";
 
 type CardErrorProps = {
   message: string | undefined;
@@ -8,10 +9,9 @@ type CardErrorProps = {
 export const CardError = ({ message }: CardErrorProps) => {
   return (
     <div className={errorMessage} role="alert">
-      <span>
-        <TriangleAlert />
-      </span>
-      <p>{message}</p>
+      <TriangleAlert />
+
+      <FieldError message={message} />
     </div>
   );
 };
