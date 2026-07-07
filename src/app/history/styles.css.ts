@@ -23,3 +23,33 @@ export const section = style({
   minHeight: "calc(80vh - 1rem)",
   padding: spacing["2xl"],
 });
+
+export const list = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: spacing.xs,
+});
+
+export const pagination = style({
+  marginTop: spacing["2xl"],
+  paddingTop: spacing["2xl"],
+  borderTop: `1px solid ${colors.border.medium}`,
+});
+
+export const empty = style({
+  height: "200px",
+
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: spacing.sm,
+
+  color: colors.text.muted,
+  fontSize: typography.fontSize.xl,
+});
+
+export const emptySub = style({
+  fontSize: typography.fontSize.base,
+  opacity: 0.7,
+});

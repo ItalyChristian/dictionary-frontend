@@ -4,15 +4,11 @@ import { FavoriteItemProps } from "./types";
 import { X } from "lucide-react";
 import { formatDate } from "@/utils/formatDate";
 
-export function FavoriteItem({
-  favorite,
-  onRemove,
-  className,
-}: FavoriteItemProps) {
+export function FavoriteItem({ favorite, onRemove }: FavoriteItemProps) {
   const formattedDate = formatDate(favorite.added);
 
   return (
-    <div className={clsx(styles.item, className)}>
+    <div className={clsx(styles.item)}>
       <div className={styles.content}>
         <p className={styles.word}>{favorite.word}</p>
         <span className={styles.date}>Added: {formattedDate}</span>

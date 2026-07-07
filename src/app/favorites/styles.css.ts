@@ -45,28 +45,6 @@ export const pagination = style({
   borderTop: `1px solid ${colors.border.medium}`,
 });
 
-export const loading = style({
-  height: "200px",
-
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-
-  color: colors.text.secondary,
-  fontSize: typography.fontSize.xl,
-});
-
-export const error = style({
-  height: "200px",
-
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-
-  color: colors.status.error,
-  fontSize: typography.fontSize.xl,
-});
-
 export const empty = style({
   height: "200px",
 

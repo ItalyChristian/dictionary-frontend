@@ -11,6 +11,8 @@ import { Pagination } from "@/components/Pagination";
 import { Favorite } from "./Favorite";
 
 export default function Favorites() {
+  const pageTitle = "Favorites";
+
   const [page, setPage] = useState(1);
   const {
     favorites,
@@ -26,8 +28,6 @@ export default function Favorites() {
     nextPage,
     prevPage,
   } = useFavorites(page, 10);
-
-  const pageTitle = "Favorites";
 
   if (isLoading) {
     return (
