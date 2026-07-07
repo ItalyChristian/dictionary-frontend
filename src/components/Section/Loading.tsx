@@ -13,7 +13,8 @@ export const SectionLoading = ({ title, message }: LoadingProps) => {
           <h1 className={styles.title}>{title}</h1>
         </header>
 
-        <section className={clsx(glassCard, styles.section)}>
+        <section className={clsx(glassCard, styles.sectionLoading)}>
+          <div className={styles.spinner} />
           <div className={styles.loading}>{message}</div>
         </section>
       </div>
