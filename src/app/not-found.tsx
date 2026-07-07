@@ -66,14 +66,14 @@ export default function NotFound() {
             <h2 className={styles.suggestionsTitle}>Here's what you can do:</h2>
             <ul className={styles.suggestionsList}>
               <li>
-                <Link href="/" className={styles.link}>
+                <Link href="/login" className={styles.link}>
                   🏠 Go back to the homepage
                 </Link>
               </li>
             </ul>
           </div>
 
-          <Link href="/" className={styles.primaryButton}>
+          <Link href="/login" className={styles.primaryButton}>
             Return to Homepage
           </Link>
         </div>
