@@ -16,13 +16,3 @@ export const title = style({
   fontWeight: typography.fontWeight.bold,
   color: colors.status.purple,
 });
-
-export const inputIcon = style({
-  color: colors.text.secondary,
-  cursor: "pointer",
-  paddingRight: "0.5rem",
-
-  ":hover": {
-    color: colors.text.primary,
-  },
-});
