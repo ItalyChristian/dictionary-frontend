@@ -4,54 +4,11 @@ import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { API_BASE_URL } from "@/utils/constants";
 import { loginSchema } from "./schema";
-
-const loginAttempts = new Map<
-  string,
-  { count: number; blockedUntil: number }
->();
-
-function checkRateLimit(email: string): {
-  blocked: boolean;
-  remainingTime?: number;
-} {
-  const key = `${email}`;
-  const attempt = loginAttempts.get(key);
-
-  if (attempt && attempt.blockedUntil > Date.now()) {
-    const remainingTime = Math.ceil(
-      (attempt.blockedUntil - Date.now()) / 60000,
-    );
-    return { blocked: true, remainingTime };
-  }
-
-  return { blocked: false };
-}
-
-function incrementLoginAttempts(email: string): void {
-  const key = `${email}`;
-  const attempt = loginAttempts.get(key);
-
-  if (!attempt) {
-    loginAttempts.set(key, { count: 1, blockedUntil: 0 });
-    return;
-  }
-
-  const newCount = attempt.count + 1;
-
-  if (newCount >= 5) {
-    loginAttempts.set(key, {
-      count: newCount,
-      blockedUntil: Date.now() + 15 * 60 * 1000,
-    });
-    return;
-  }
-
-  loginAttempts.set(key, { count: newCount, blockedUntil: 0 });
-}
-
-function resetLoginAttempts(email: string): void {
-  loginAttempts.delete(`${email}`);
-}
+import {
+  checkRateLimit,
+  incrementLoginAttempts,
+  resetLoginAttempts,
+} from "@/utils/resetLoginAttempts";
 
 export async function loginAction(
   prevState: { error?: string; success?: boolean; redirectTo?: string } | null,
