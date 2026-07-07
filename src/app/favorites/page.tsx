@@ -27,7 +27,7 @@ export default function Favorites() {
     goToPage,
     nextPage,
     prevPage,
-  } = useFavorites(page, 10);
+  } = useFavorites(page, 5);
 
   if (isLoading) {
     return (
@@ -76,7 +76,7 @@ export default function Favorites() {
                 onNext={nextPage}
                 onPrev={prevPage}
                 totalItems={totalDocs}
-                itemsPerPage={10}
+                itemsPerPage={5}
                 className={styles.pagination}
               />
             </>
