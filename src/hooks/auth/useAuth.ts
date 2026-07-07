@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { User } from "./types";
-import { logoutAction } from "@/api/auth/auth";
+import { logoutAction } from "@/actions/auth/auth";
 
 export function useAuth() {
   const router = useRouter();

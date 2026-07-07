@@ -1,6 +1,6 @@
 import MainLayout from "@/templates/MainLayout";
-import { accent } from "./page.css";
 import { Header } from "@/components/Header";
+import { accent } from "./page.css";
 
 export default function Home() {
   return (

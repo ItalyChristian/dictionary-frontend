@@ -4,6 +4,7 @@ import { typography } from "@/styles/tokens/typography.css";
 import { colors } from "@/styles/tokens/colors.css";
 
 export const sidebar = style({
+  minWidth: "15vw",
   minHeight: "calc(100vh - 3rem)",
   position: "sticky",
 

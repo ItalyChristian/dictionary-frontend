@@ -72,6 +72,12 @@ export const button = style({
   overflow: "hidden",
 
   selectors: {
+    "&:hover": {
+      transform: "translateY(-2px) scale(1.01)",
+      boxShadow:
+        "0 10px 30px rgba(98, 0, 242, 0.4), 0 0 40px rgba(107, 255, 105, 0.1)",
+      backgroundPosition: "100% 100%",
+    },
     "&::before": {
       content: "",
       position: "absolute",
@@ -82,12 +88,6 @@ export const button = style({
       backgroundSize: "200% 200%",
       opacity: 0,
       transition: "opacity 0.5s ease",
-    },
-    "&:hover": {
-      transform: "translateY(-2px) scale(1.01)",
-      boxShadow:
-        "0 10px 30px rgba(98, 0, 242, 0.4), 0 0 40px rgba(107, 255, 105, 0.1)",
-      backgroundPosition: "100% 100%",
     },
   },
 });
