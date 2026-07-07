@@ -7,7 +7,7 @@ import { Eye, EyeClosed } from "lucide-react";
 import * as styles from "./styles.css";
 import { Form } from "@/components/Form";
 import { input } from "@/components/Form/styles.css";
-import { loginAction } from "@/api/auth/auth";
+import { loginAction } from "@/actions/auth/auth";
 import { initialState } from "./types";
 
 export function LoginForm() {
