@@ -77,11 +77,14 @@ export function LoginForm() {
       </button>
 
       <div className={styles.footerLinks}>
+        <div className={styles.divider} />
+
         <a href="#" className={styles.link}>
           Forgot your password?
         </a>
         <a href="/register" className={styles.link}>
-          Not registered yet? Create an account
+          Not registered yet?{" "}
+          <span className={styles.linkHighlight}>Create an account</span>
         </a>
       </div>
     </Form.Form>

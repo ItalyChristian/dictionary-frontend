@@ -13,21 +13,45 @@ export const wrapper = style([
 ]);
 
 export const card = style({
-  minWidth: "28rem",
-  minHeight: "90vh",
-
+  width: "100%",
+  maxWidth: "56rem",
+  minHeight: "auto",
   display: "flex",
-  gap: "10rem",
-  paddingRight: "10rem",
+  alignItems: "center",
+  gap: "clamp(2rem, 4vw, 10rem)",
+
+  overflow: "hidden",
+
+  "@media": {
+    "(max-width: 1024px)": {
+      height: "100vh",
+      justifyContent: "center",
+      flexDirection: "column",
+      gap: "2rem",
+      padding: "2rem 1.5rem",
+    },
+  },
 });
 
 export const image = style({
-  width: "28rem",
-  height: "90vh",
+  width: "100%",
+  maxWidth: "28rem",
+  height: "auto",
+  aspectRatio: "4 / 5",
   objectFit: "cover",
+  flexShrink: 0,
+
+  "@media": {
+    "(max-width: 1024px)": {
+      display: "none",
+    },
+  },
 });
 
-export const content = style([flexColumnCenter, { gap: spacing.lg }]);
+export const content = style([
+  flexColumnCenter,
+  { gap: spacing.lg, paddingLeft: "3rem" },
+]);
 
 export const title = style({
   fontSize: typography.fontSize["4xl"],
@@ -35,8 +59,3 @@ export const title = style({
   color: colors.text.primary,
 });
 
-export const divider = style({
-  width: "100%",
-  height: "1px",
-  backgroundColor: "#FFF",
-});

@@ -18,7 +18,14 @@ export default async function LoginPage() {
   return (
     <div className={styles.wrapper}>
       <div className={`${glassCard} ${styles.card}`}>
-        <Image src={loginBanner} alt="" className={styles.image} />
+        <Image
+          src={loginBanner}
+          alt=""
+          className={styles.image}
+          sizes="(max-width: 1024px) 0px, 50vw"
+          loading="eager"
+          priority
+        />
 
         <div className={styles.content}>
           <div className={flexColumnCenter}>

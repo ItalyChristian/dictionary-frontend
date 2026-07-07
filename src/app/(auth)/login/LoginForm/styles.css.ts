@@ -33,13 +33,21 @@ export const passwordIcon = style({
   },
 });
 
-export const footerLinks = style([flexColumnCenter, { marginTop: spacing.lg }]);
+export const footerLinks = style([
+  flexColumnCenter,
+  { marginTop: spacing.lg, gap: "0.5rem" },
+]);
 
 export const link = style({
-  color: "rgba(255, 255, 255, 0.4)",
+  color: colors.text.muted,
   fontSize: typography.fontSize.sm,
+  fontWeight: typography.fontWeight.bold,
   textDecoration: "none",
   transition: "color 0.3s ease",
+});
+
+export const linkHighlight = style({
+  color: colors.status.success,
 });
 
 export const button = style({
@@ -82,4 +90,11 @@ export const button = style({
       backgroundPosition: "100% 100%",
     },
   },
+});
+
+export const divider = style({
+  width: "100%",
+  height: "1px",
+  backgroundColor: "#FFF",
+  opacity: 0.5,
 });
