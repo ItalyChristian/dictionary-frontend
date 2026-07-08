@@ -15,6 +15,26 @@ export const sidebar = style({
   justifyContent: "space-between",
 
   padding: spacing.xl,
+
+  "@media": {
+    "(max-width: 1024px)": {
+      width: "calc(100vw - 2.5rem)",
+      minHeight: "unset",
+      flexDirection: "row",
+    },
+  },
+});
+
+export const nav = style({
+  width: "100%",
+  display: "flex",
+  flexDirection: "column",
+
+  "@media": {
+    "(max-width: 1024px)": {
+      flexDirection: "row",
+    },
+  },
 });
 
 export const navLink = style({
@@ -22,12 +42,14 @@ export const navLink = style({
   alignItems: "center",
   gap: spacing.sm,
   padding: `${spacing.md} ${spacing.lg}`,
+
   borderRadius: radii.lg,
   color: colors.text.secondary,
   textDecoration: "none",
-  transition: "all 0.25s ease",
   fontSize: 14,
   fontWeight: typography.fontWeight.medium,
+
+  transition: "all 0.25s ease",
   whiteSpace: "nowrap",
   selectors: {
     "&:hover": {

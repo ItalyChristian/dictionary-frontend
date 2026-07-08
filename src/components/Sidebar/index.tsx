@@ -19,7 +19,7 @@ export const Sidebar = () => {
 
   return (
     <aside className={clsx(glass, styles.sidebar)}>
-      <nav>
+      <nav className={styles.nav}>
         {navItems.map((item) => {
           const active = isActive(item.href);
           const Icon = item.icon;
