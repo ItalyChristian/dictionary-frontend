@@ -10,7 +10,7 @@ export function handleApiError(error: unknown): {
       error.response?.data?.message ||
       error.response?.data?.error ||
       error.message ||
-      "Erro desconhecido";
+      "Internal error";
 
     return { error: String(message), status };
   }
@@ -19,5 +19,5 @@ export function handleApiError(error: unknown): {
     return { error: error.message, status: 500 };
   }
 
-  return { error: "Erro desconhecido", status: 500 };
+  return { error: "Internal error", status: 500 };
 }
