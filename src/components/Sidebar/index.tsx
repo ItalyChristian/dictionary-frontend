@@ -8,6 +8,7 @@ import { navItems } from "./data";
 import { DoorOpen, Menu, X } from "lucide-react";
 import { useAuth } from "@/hooks/auth/useAuth";
 import { useState } from "react";
+import { colors } from "@/styles/tokens/colors.css";
 
 export const Sidebar = () => {
   const { logout } = useAuth();
@@ -26,19 +27,19 @@ export const Sidebar = () => {
           className={styles.menuMobileIcon}
           onClick={handleClose}
           aria-label="Fechar menu"
+          style={{ background: "none" }}
         >
           <X size={24} />
         </button>
       ) : (
-      
-          <button
-            className={styles.menuMobileIcon}
-            onClick={() => setVisible(true)}
-            aria-label="Abrir menu"
-          >
-            <Menu size={24} />
-          </button>
-     
+        <button
+          className={styles.menuMobileIcon}
+          onClick={() => setVisible(true)}
+          aria-label="Abrir menu"
+          style={{ background: colors.status.successBgSec }}
+        >
+          <Menu size={24} />
+        </button>
       )}
 
       <aside

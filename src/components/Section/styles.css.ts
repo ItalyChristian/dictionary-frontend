@@ -33,6 +33,7 @@ export const section = style({
   "@media": {
     "(max-width: 1024px)": {
       width: "calc(100vw - 3rem)",
+      height: "900rem",
     },
   },
 });

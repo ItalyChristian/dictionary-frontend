@@ -145,7 +145,7 @@ export const menuMobileIcon = style({
   top: "1.5rem",
   right: "1.5rem",
   zIndex: 30,
-  background: "none",
+
   border: "none",
   color: colors.text.primary,
   cursor: "pointer",
@@ -169,7 +169,7 @@ export const menuMobileIcon = style({
 export const overlay = style({
   position: "fixed",
   inset: 0,
-  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  // backgroundColor: "rgba(0, 0, 0, 0.5)",
   zIndex: 10,
   opacity: 0,
   pointerEvents: "none",

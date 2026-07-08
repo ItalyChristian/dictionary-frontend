@@ -11,6 +11,12 @@ export const container = style({
   gap: spacing["2xl"],
 
   margin: "0 auto",
+
+  "@media": {
+    "(max-width: 1024px)": {
+      width: "calc(100vw - 3rem)",
+    },
+  },
 });
 
 export const header = style({

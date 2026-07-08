@@ -10,6 +10,12 @@ export const wrapper = style({
   alignItems: "center",
   justifyContent: "space-between",
   padding: spacing.xl,
+
+  "@media": {
+    "(max-width: 1024px)": {
+      width: "calc(100vw - 3rem)",
+    },
+  },
 });
 
 export const title = style({
@@ -24,6 +30,12 @@ export const header = style({
   alignItems: "center",
 
   padding: spacing.sm,
+
+  "@media": {
+    "(max-width: 1024px)": {
+      width: "calc(100vw - 3rem)",
+    },
+  },
 });
 
 export const text = style([
