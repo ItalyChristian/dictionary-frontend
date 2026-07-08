@@ -1,36 +1,50 @@
-import { style } from '@vanilla-extract/css';
-import { colors } from './styles/tokens/colors.css';
+import { style } from "@vanilla-extract/css";
+import { colors } from "@/styles/tokens/colors.css";
+import { radii, spacing } from "@/styles/tokens/spacing.css";
+import { typography } from "@/styles/tokens/typography.css";
 
-export const page = style({
-  minHeight: '100vh',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  padding: '2rem',
-  background: colors.gradient.primary,
+export const section = style({
+  minHeight: "calc(80vh - 1rem)",
+  padding: spacing["2xl"],
+  display: "flex",
+  flexDirection: "column",
+  gap: spacing.xl,
 });
 
-export const card = style({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '1rem',
-  maxWidth: '36rem',
-  padding: '2rem',
-  borderRadius: '1.5rem',
-  background: colors.background.glass,
-  border: `1px solid ${colors.border.light}`,
-  boxShadow: '0 1rem 2rem rgba(0, 0, 0, 0.24)',
+export const pagination = style({
+  marginTop: "auto",
+  paddingTop: spacing["2xl"],
+  borderTop: `1px solid ${colors.border.green}`,
 });
 
-export const eyebrow = style({
-  fontSize: '0.875rem',
-  fontWeight: 700,
-  letterSpacing: '0.2em',
-  textTransform: 'uppercase',
-  color: colors.status.success,
+export const empty = style({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  minHeight: "300px",
+  gap: spacing.sm,
+  color: colors.text.muted,
+  fontSize: typography.fontSize.xl,
 });
 
-export const accent = style({
-  color: colors.primary[600],
-  fontWeight: 600,
+export const emptySub = style({
+  fontSize: typography.fontSize.base,
+  opacity: 0.7,
+});
+
+export const errorSection = style({
+  padding: spacing["2xl"],
+  minHeight: "400px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+});
+
+export const errorContainer = style({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: spacing.md,
+  textAlign: "center",
 });
