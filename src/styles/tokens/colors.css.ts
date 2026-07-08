@@ -70,6 +70,7 @@ export const colors = createGlobalTheme(":root", {
   status: {
     success: "#6BFF69",
     successBg: "rgba(107, 255, 105, 0.12)",
+    successBgSec: "rgba(118, 255, 116, 0.35)",
     warning: "#fbbf24",
     warningBg: "rgba(251, 191, 36, 0.12)",
     error: "#f87171",

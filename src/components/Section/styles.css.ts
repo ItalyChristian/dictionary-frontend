@@ -11,6 +11,12 @@ export const header = style({
   justifyContent: "space-between",
   padding: `${spacing["2xl"]} ${spacing["4xl"]}`,
   borderRadius: radii.lg,
+
+  "@media": {
+    "(max-width: 1024px)": {
+      width: "calc(100vw - 3rem)",
+    },
+  },
 });
 
 export const title = style({
@@ -23,6 +29,13 @@ export const title = style({
 export const section = style({
   minHeight: "calc(80vh - 1rem)",
   padding: spacing["2xl"],
+
+  "@media": {
+    "(max-width: 1024px)": {
+      width: "calc(100vw - 3rem)",
+      height: "900rem",
+    },
+  },
 });
 
 export const sectionLoading = style([

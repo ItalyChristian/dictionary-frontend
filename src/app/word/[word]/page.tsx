@@ -4,6 +4,7 @@ import { WordDetails } from "@/components/WordDetails";
 import { WordError } from "../WordError/index";
 import { getWord } from "@/actions/entries/word";
 import { WordPageProps } from "./types";
+import { WordPageHeader } from "../WordError/PageHeader";
 
 export async function generateMetadata({
   params,
@@ -38,7 +39,10 @@ export default async function WordPage({ params }: WordPageProps) {
 
     return (
       <MainLayout>
-        <WordDetails wordData={wordData} />
+        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          <WordPageHeader />
+          <WordDetails wordData={wordData} />
+        </div>
       </MainLayout>
     );
   } catch (error) {

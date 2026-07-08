@@ -40,7 +40,7 @@ export const footerLinks = style([
 
 export const link = style({
   color: colors.text.muted,
-  fontSize: typography.fontSize.sm,
+  fontSize: typography.fontSize.md,
   fontWeight: typography.fontWeight.bold,
   textDecoration: "none",
   transition: "color 0.3s ease",

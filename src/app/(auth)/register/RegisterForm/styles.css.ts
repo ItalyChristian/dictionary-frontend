@@ -2,6 +2,7 @@ import { style } from "@vanilla-extract/css";
 import { colors } from "@/styles/tokens/colors.css";
 import { typography } from "@/styles/tokens/typography.css";
 import { radii, spacing } from "@/styles/tokens/spacing.css";
+import { flexColumnCenter } from "@/styles/components/gridSystem.css";
 
 export const passwordWrapper = style({
   width: "100%",
@@ -72,4 +73,42 @@ export const button = style({
       transition: "opacity 0.5s ease",
     },
   },
+});
+
+export const footerLinks = style([
+  flexColumnCenter,
+  { marginTop: spacing.lg, gap: "0.5rem" },
+]);
+
+export const divider = style({
+  width: "100%",
+  height: "1px",
+  backgroundColor: "#FFF",
+  opacity: 0.5,
+});
+
+export const link = style({
+  color: colors.text.muted,
+  fontSize: typography.fontSize.md,
+  fontWeight: typography.fontWeight.bold,
+  textDecoration: "none",
+
+  display: "inline-flex",
+  alignItems: "center",
+  gap: "0.5rem",
+  transition: "all 0.2s ease",
+
+  cursor: "pointer",
+
+  ":hover": {
+    color: colors.status.success,
+    transform: "translateX(4px)",
+  },
+});
+
+export const text = style({
+  color: colors.text.muted,
+  fontSize: typography.fontSize.md,
+  fontWeight: typography.fontWeight.bold,
+  textDecoration: "none",
 });

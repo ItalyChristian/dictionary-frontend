@@ -89,6 +89,24 @@ export function RegisterForm() {
       <button className={styles.button} type="submit" disabled={isPending}>
         {isPending ? "Redirecting..." : "Create account"}
       </button>
+
+      <div className={styles.footerLinks}>
+        <div className={styles.divider} />
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            gap: "0.3rem",
+          }}
+        >
+          <p className={styles.text}>Already have an account?</p>
+          <span onClick={() => router.back()} className={styles.link}>
+            Return to Login page
+          </span>
+        </div>
+      </div>
     </Form.Form>
   );
 }

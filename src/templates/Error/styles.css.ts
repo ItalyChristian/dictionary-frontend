@@ -5,7 +5,7 @@ import { style } from "@vanilla-extract/css";
 
 export const errorSection = style({
   padding: spacing["2xl"],
-  minHeight: "400px",
+  minHeight: "80vh",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",

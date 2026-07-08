@@ -10,6 +10,12 @@ export const header = style({
   justifyContent: "space-between",
   padding: `${spacing["2xl"]} ${spacing["4xl"]}`,
   borderRadius: radii.lg,
+
+  "@media": {
+    "(max-width: 1024px)": {
+      width: "calc(100vw - 3rem)",
+    },
+  },
 });
 
 export const title = style({
