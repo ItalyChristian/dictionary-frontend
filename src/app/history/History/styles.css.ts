@@ -10,6 +10,7 @@ export const item = style({
   padding: `${spacing.lg} ${spacing["2xl"]}`,
   borderBottom: `1px solid ${colors.border.purple}`,
   transition: "background-color 0.2s ease",
+  cursor: "pointer",
 
   selectors: {
     "&:hover": {

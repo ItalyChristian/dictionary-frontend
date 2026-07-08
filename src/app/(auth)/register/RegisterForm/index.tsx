@@ -1,7 +1,7 @@
 "use client";
 
-import { useActionState, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useActionState, useEffect, useState } from "react";
 import { TextField } from "@radix-ui/themes";
 import { Eye, EyeClosed } from "lucide-react";
 import * as styles from "./styles.css";
@@ -89,6 +89,24 @@ export function RegisterForm() {
       <button className={styles.button} type="submit" disabled={isPending}>
         {isPending ? "Redirecting..." : "Create account"}
       </button>
+
+      <div className={styles.footerLinks}>
+        <div className={styles.divider} />
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            gap: "0.3rem",
+          }}
+        >
+          <p className={styles.text}>Already have an account?</p>
+          <span onClick={() => router.back()} className={styles.link}>
+            Return to Login page
+          </span>
+        </div>
+      </div>
     </Form.Form>
   );
 }

@@ -7,6 +7,12 @@ export const header = style({
   width: "calc(80vw - 1rem)",
   padding: `${spacing["2xl"]} ${spacing["4xl"]}`,
   borderRadius: radii.lg,
+
+  "@media": {
+    "(max-width: 1024px)": {
+      width: "calc(100vw - 3rem)",
+    },
+  },
 });
 
 export const title = style({
@@ -23,6 +29,12 @@ export const section = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+
+  "@media": {
+    "(max-width: 1024px)": {
+      width: "calc(100vw - 3rem)",
+    },
+  },
 });
 
 export const errorContainer = style({

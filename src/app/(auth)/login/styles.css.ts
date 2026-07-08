@@ -66,7 +66,15 @@ export const loadingimage = style({
 
 export const content = style([
   flexColumnCenter,
-  { gap: spacing.lg, paddingLeft: "3rem" },
+  {
+    gap: spacing.lg,
+    paddingLeft: "3rem",
+    "@media": {
+      "(min-width: 1300px)": {
+        paddingLeft: "2.1rem",
+      },
+    },
+  },
 ]);
 
 export const title = style({

@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useHistory } from "@/hooks/history/useHistory";
 import clsx from "clsx";
 import { glass, glassCard } from "@/styles/components/glass.css";
 import { flexColumn } from "@/styles/components/gridSystem.css";
 import MainLayout from "@/templates/MainLayout";
 import * as styles from "./styles.css";
-import { useHistory } from "@/hooks/history/useHistory";
 import { History } from "./History";
 import { Pagination } from "@/components/Pagination";
 

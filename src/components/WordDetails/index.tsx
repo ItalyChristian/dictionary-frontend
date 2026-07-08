@@ -1,12 +1,12 @@
 "use client";
 
+import { useFavoriteStatus } from "@/hooks/favorites/useFavoriteStatus";
 import { useEffect } from "react";
 import clsx from "clsx";
 import * as styles from "./styles.css";
 import { glassCard } from "@/styles/components/glass.css";
 import { WordDetailsProps } from "./types";
-import { Heart, Volume2, ExternalLink, Eye } from "lucide-react";
-import { useFavoriteStatus } from "@/hooks/favorites/useFavoriteStatus";
+import { Heart, Volume2 } from "lucide-react";
 import { WordDetailsFooter } from "./Footer";
 
 export function WordDetails({

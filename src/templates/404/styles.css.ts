@@ -23,7 +23,7 @@ export const content = style({
   boxShadow: "0 20px 60px rgba(0,0,0,0.1)",
 
   "@media": {
-    "(max-width: 768px)": {
+    "(max-width: 1024px)": {
       gridTemplateColumns: "1fr",
       padding: "2rem",
       gap: "2rem",
@@ -36,6 +36,19 @@ export const imageWrapper = style({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+
+  "@media": {
+    "(max-width: 1024px)": {
+      display: "none",
+    },
+  },
+});
+
+export const loadingImage = style({
+  width: "15rem",
+  height: "auto",
+  objectFit: "contain",
+  display: "block",
 });
 
 export const image = style({
@@ -97,6 +110,8 @@ export const link = style({
   gap: "0.5rem",
   transition: "all 0.2s ease",
 
+  cursor: "pointer",
+
   ":hover": {
     color: colors.text.light,
     transform: "translateX(4px)",
@@ -116,6 +131,10 @@ export const primaryButton = style({
   transition: "all 0.2s ease",
   marginTop: "0.5rem",
   alignSelf: "flex-start",
+
+  outline: "none",
+  border: "none",
+  cursor: "pointer",
 
   ":hover": {
     backgroundColor: colors.background.glassHover,

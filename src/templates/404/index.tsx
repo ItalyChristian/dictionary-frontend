@@ -1,51 +1,30 @@
+"use client";
+
 import Link from "next/link";
 import * as styles from "./styles.css";
+import {
+  ArrowBigLeftDash,
+  ArrowLeftToLine,
+  CircleArrowLeft,
+  House,
+} from "lucide-react";
+import assistantVector from "@/assets/images/assistant-vector.png";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export const NotFoundComponent = () => {
+  const router = useRouter();
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         <div className={styles.imageWrapper}>
-          <svg
-            width="400"
-            height="300"
-            viewBox="0 0 400 300"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-labelledby="notFoundTitle"
-          >
-            <title id="notFoundTitle">404 - Page Not Found Illustration</title>
-
-            <rect width="400" height="300" rx="12" fill="#F3F4F6" />
-            <text
-              x="200"
-              y="120"
-              textAnchor="middle"
-              fontSize="72"
-              fontWeight="bold"
-              fill="#6366F1"
-            >
-              404
-            </text>
-            <text
-              x="200"
-              y="180"
-              textAnchor="middle"
-              fontSize="20"
-              fill="#6B7280"
-            >
-              Page Not Found
-            </text>
-            <circle cx="120" cy="220" r="20" fill="#E5E7EB" />
-            <circle cx="280" cy="220" r="20" fill="#E5E7EB" />
-            <path
-              d="M160 250 Q200 280 240 250"
-              stroke="#9CA3AF"
-              strokeWidth="4"
-              fill="none"
-            />
-          </svg>
+          <Image
+            src={assistantVector}
+            alt="Virtual assistant Helena waving"
+            className={styles.loadingImage}
+            priority
+          />
         </div>
 
         <div className={styles.textContent}>
@@ -58,16 +37,23 @@ export const NotFoundComponent = () => {
             <h2 className={styles.suggestionsTitle}>Here's what you can do:</h2>
             <ul className={styles.suggestionsList}>
               <li>
-                <Link href="/login" className={styles.link}>
-                  🏠 Go back to the homepage
+                <Link href="/" className={styles.link}>
+                  <House size={14} /> <p>Go back to the homepage</p>
                 </Link>
+              </li>
+
+              <li onClick={() => router.back()} className={styles.link}>
+                <CircleArrowLeft size={14} /> <p>Return to previous page</p>
               </li>
             </ul>
           </div>
 
-          <Link href="/login" className={styles.primaryButton}>
-            Return to Homepage
-          </Link>
+          <button
+            className={styles.primaryButton}
+            onClick={() => router.back()}
+          >
+            Return to previous page
+          </button>
         </div>
       </div>
     </div>

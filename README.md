@@ -62,7 +62,25 @@ Este projeto foi construído utilizando:
 ### 1. Instalar dependências
 
 ```bash
-npm install
-# ou
 yarn install
+# ou
+npm install
 ```
+
+### 2. Configurar variáveis de ambiente
+
+Copie o arquivo de exemplo e ajuste se necessário:
+
+```bash
+cp .env.example .env
+```
+
+### 3. Rodar o projeto
+
+```bash
+yarn dev
+# ou
+npm run dev
+```
+
+A aplicação estará disponível em **http://localhost:3000**.
