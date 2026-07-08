@@ -1,14 +1,21 @@
 import { style } from "@vanilla-extract/css";
 import { colors } from "@/styles/tokens/colors.css";
-import { radii, spacing } from "@/styles/tokens/spacing.css";
+import { spacing } from "@/styles/tokens/spacing.css";
 import { typography } from "@/styles/tokens/typography.css";
 
 export const section = style({
+  width: "calc(80vw - 1rem)",
   minHeight: "calc(80vh - 1rem)",
   padding: spacing["2xl"],
   display: "flex",
   flexDirection: "column",
   gap: spacing.xl,
+
+  "@media": {
+    "(max-width: 1024px)": {
+      width: "calc(100vw - 3rem)",
+    },
+  },
 });
 
 export const pagination = style({
@@ -47,4 +54,12 @@ export const errorContainer = style({
   alignItems: "center",
   gap: spacing.md,
   textAlign: "center",
+});
+
+export const resultsCount = style({
+  fontSize: typography.fontSize.sm,
+  color: colors.text.muted,
+  paddingLeft: spacing.sm,
+  marginTop: spacing.xs,
+  display: "block",
 });
