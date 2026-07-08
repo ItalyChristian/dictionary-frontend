@@ -2,11 +2,12 @@
 
 import { useEffect } from "react";
 import clsx from "clsx";
-import { Heart, Volume2, ExternalLink, Eye } from "lucide-react";
-import { glassCard } from "@/styles/components/glass.css";
 import * as styles from "./styles.css";
+import { glassCard } from "@/styles/components/glass.css";
 import { WordDetailsProps } from "./types";
+import { Heart, Volume2, ExternalLink, Eye } from "lucide-react";
 import { useFavoriteStatus } from "@/hooks/favorites/useFavoriteStatus";
+import { WordDetailsFooter } from "./Footer";
 
 export function WordDetails({
   wordData,
@@ -136,29 +137,10 @@ export function WordDetails({
         ))}
       </div>
 
-      <div className={styles.footer}>
-        <div className={styles.stats}>
-          <span className={styles.stat}>
-            <Heart /> {details.stats.favorites} favorites
-          </span>
-          <span className={styles.stat}>
-            <Eye /> {details.stats.views} views
-          </span>
-        </div>
-
-        <div className={styles.source}>
-          <span>Data provided by </span>
-          <a
-            href="https://dictionaryapi.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.sourceLink}
-          >
-            DictionaryAPI.dev
-            <ExternalLink size={12} />
-          </a>
-        </div>
-      </div>
+      <WordDetailsFooter
+        favorites={details.stats.favorites}
+        views={details.stats.views}
+      />
     </div>
   );
 }
