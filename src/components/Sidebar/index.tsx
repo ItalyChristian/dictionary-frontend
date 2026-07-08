@@ -5,8 +5,12 @@ import * as styles from "./styles.css";
 import { usePathname } from "next/navigation";
 import { glass } from "@/styles/components/glass.css";
 import { navItems } from "./data";
+import { DoorOpen } from "lucide-react";
+import { useAuth } from "@/hooks/auth/useAuth";
 
 export const Sidebar = () => {
+  const { logout } = useAuth();
+
   const pathname = usePathname();
 
   const isActive = (href: string) => {
@@ -35,6 +39,10 @@ export const Sidebar = () => {
           );
         })}
       </nav>
+
+      <span className={styles.logout} onClick={logout}>
+        <DoorOpen /> <p>Logout</p>
+      </span>
     </aside>
   );
 };

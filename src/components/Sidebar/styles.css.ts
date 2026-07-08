@@ -2,11 +2,17 @@ import { style } from "@vanilla-extract/css";
 import { radii, spacing } from "@/styles/tokens/spacing.css";
 import { typography } from "@/styles/tokens/typography.css";
 import { colors } from "@/styles/tokens/colors.css";
+import { flexCenter } from "@/styles/components/gridSystem.css";
 
 export const sidebar = style({
   minWidth: "15vw",
   minHeight: "calc(100vh - 3rem)",
   position: "sticky",
+
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "space-between",
 
   padding: spacing.xl,
 });
@@ -67,3 +73,8 @@ export const iconActive = style({
     },
   },
 });
+
+export const logout = style([
+  flexCenter,
+  { gap: spacing.sm, fontSize: typography.fontSize.md, cursor: "pointer" },
+]);
