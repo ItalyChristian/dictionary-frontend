@@ -1,9 +1,10 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import clsx from "clsx";
 import * as styles from "./styles.css";
 import { WordListProps } from "./types";
+import { useRouter } from "next/navigation";
 
 export function WordList({
   words,
@@ -11,6 +12,8 @@ export function WordList({
   selectedWord,
   className,
 }: WordListProps) {
+  const router = useRouter();
+
   const groupedWords = useMemo(() => {
     const groups: Record<string, string[]> = {};
 
@@ -25,6 +28,13 @@ export function WordList({
     return Object.entries(groups).sort(([a], [b]) => a.localeCompare(b));
   }, [words]);
 
+  const [hoveredWord, setHoveredWord] = useState<string | null>(null);
+
+  const handleWordClick = (word: string) => {
+    onWordSelect?.(word);
+    router.push(`/word/${encodeURIComponent(word)}`);
+  };
+
   return (
     <div className={clsx(styles.container, className)}>
       {groupedWords.map(([letter, wordsList]) => (
@@ -34,9 +44,12 @@ export function WordList({
             {wordsList.map((word) => (
               <button
                 key={word}
-                onClick={() => onWordSelect?.(word)}
+                onClick={() => handleWordClick(word)}
+                onMouseEnter={() => setHoveredWord(word)}
+                onMouseLeave={() => setHoveredWord(null)}
                 className={clsx(styles.wordButton, {
                   [styles.wordButtonActive]: selectedWord === word,
+                  [styles.wordButtonHover]: hoveredWord === word,
                 })}
               >
                 {word}

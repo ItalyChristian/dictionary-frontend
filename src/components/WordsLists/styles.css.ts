@@ -32,6 +32,27 @@ export const wordsGrid = style({
   padding: `${spacing.xs} 0`,
 });
 
+// export const wordButton = style({
+//   padding: `${spacing.xs} ${spacing.md}`,
+//   borderRadius: radii.md,
+//   border: "none",
+//   backgroundColor: "transparent",
+//   color: colors.text.primary,
+//   fontSize: typography.fontSize.sm,
+//   textAlign: "left",
+//   cursor: "pointer",
+//   transition: "all 0.2s ease",
+//   whiteSpace: "nowrap",
+//   overflow: "hidden",
+//   textOverflow: "ellipsis",
+
+//   ":hover": {
+//     backgroundColor: colors.background.glassHover,
+//     color: colors.status.purple,
+//     transform: "translateX(4px)",
+//   },
+// });
+
 export const wordButton = style({
   padding: `${spacing.xs} ${spacing.md}`,
   borderRadius: radii.md,
@@ -51,6 +72,12 @@ export const wordButton = style({
     color: colors.status.purple,
     transform: "translateX(4px)",
   },
+});
+
+export const wordButtonHover = style({
+  backgroundColor: colors.background.glassHover,
+  color: colors.status.purple,
+  transform: "translateX(4px)",
 });
 
 export const wordButtonActive = style({
