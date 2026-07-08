@@ -4,6 +4,17 @@ import { typography } from "@/styles/tokens/typography.css";
 import { colors } from "@/styles/tokens/colors.css";
 import { flexCenter } from "@/styles/components/gridSystem.css";
 
+export const userName = style({
+  textAlign: "center",
+  fontSize: "1rem",
+  fontWeight: 500,
+  color: colors.text.primary,
+  padding: spacing.sm,
+  marginBottom: spacing.md,
+  borderBottom: `1px solid ${colors.border.medium}`,
+  width: "100%",
+});
+
 export const sidebar = style({
   width: "15vw",
   minWidth: "15vw",

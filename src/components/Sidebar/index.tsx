@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { Greeting } from "../Greetings";
 import { useAuth } from "@/hooks/auth/useAuth";
 import clsx from "clsx";
 import * as styles from "./styles.css";
@@ -16,7 +17,7 @@ export const Sidebar = () => {
   const [visible, setVisible] = useState(false);
   const handleClose = () => setVisible(false);
 
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
 
   const isActive = (href: string) => {
     return pathname === href;
@@ -52,6 +53,8 @@ export const Sidebar = () => {
         )}
       >
         <nav className={styles.nav}>
+          <Greeting name={user?.name} />
+
           {navItems.map((item) => {
             const active = isActive(item.href);
             const Icon = item.icon;
