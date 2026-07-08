@@ -3,4 +3,6 @@ export interface WordListProps {
   onWordSelect?: (word: string) => void;
   selectedWord?: string;
   className?: string;
+  onLetterSelect?: (letter: string) => void;
+  activeLetter?: string;
 }

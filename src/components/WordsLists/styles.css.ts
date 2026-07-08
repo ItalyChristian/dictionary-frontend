@@ -32,27 +32,6 @@ export const wordsGrid = style({
   padding: `${spacing.xs} 0`,
 });
 
-// export const wordButton = style({
-//   padding: `${spacing.xs} ${spacing.md}`,
-//   borderRadius: radii.md,
-//   border: "none",
-//   backgroundColor: "transparent",
-//   color: colors.text.primary,
-//   fontSize: typography.fontSize.sm,
-//   textAlign: "left",
-//   cursor: "pointer",
-//   transition: "all 0.2s ease",
-//   whiteSpace: "nowrap",
-//   overflow: "hidden",
-//   textOverflow: "ellipsis",
-
-//   ":hover": {
-//     backgroundColor: colors.background.glassHover,
-//     color: colors.status.purple,
-//     transform: "translateX(4px)",
-//   },
-// });
-
 export const wordButton = style({
   padding: `${spacing.xs} ${spacing.md}`,
   borderRadius: radii.md,
@@ -88,4 +67,19 @@ export const wordButtonActive = style({
   ":hover": {
     backgroundColor: "rgba(167, 139, 250, 0.25)",
   },
+});
+
+export const alphabetNav = style({
+  marginBottom: spacing.lg,
+  paddingBottom: spacing.md,
+  borderBottom: `1px solid ${colors.border.medium}`,
+});
+
+export const empty = style({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  minHeight: "200px",
+  color: colors.text.muted,
+  fontSize: typography.fontSize.lg,
 });
