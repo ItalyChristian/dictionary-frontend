@@ -22,7 +22,9 @@ export async function getFavorites(
 
 export async function addFavorite(word: string): Promise<void> {
   try {
-    await httpClient.post(`/entries/en/${encodeURIComponent(word)}/favorite`);
+    await httpClient.post(`/entries/en/${encodeURIComponent(word)}/favorite`, {
+      headers: { "Content-Type": undefined },
+    });
   } catch (error) {
     console.error("Error adding favorite:", error);
     throw error;
@@ -33,6 +35,7 @@ export async function removeFavorite(word: string): Promise<void> {
   try {
     await httpClient.delete(
       `/entries/en/${encodeURIComponent(word)}/unfavorite`,
+      { headers: { "Content-Type": undefined } },
     );
   } catch (error) {
     console.error("Error removing favorite:", error);
