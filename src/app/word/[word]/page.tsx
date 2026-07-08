@@ -3,7 +3,6 @@ import MainLayout from "@/templates/MainLayout";
 import { WordDetails } from "@/components/WordDetails";
 import { WordError } from "../WordError/index";
 import { getWord } from "@/actions/entries/word";
-import { PageLoading } from "@/templates/Loading";
 import { WordPageProps } from "./types";
 
 export async function generateMetadata({
@@ -57,12 +56,4 @@ export default async function WordPage({ params }: WordPageProps) {
       />
     );
   }
-}
-
-export function WordPageLoading() {
-  return (
-    <MainLayout>
-      <PageLoading />
-    </MainLayout>
-  );
 }
