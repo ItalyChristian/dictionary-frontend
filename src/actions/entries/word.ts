@@ -8,6 +8,11 @@ export async function getWord(word: string): Promise<WordResponse> {
     const { data } = await httpClient.get<WordResponse>(
       `/entries/en/${encodeURIComponent(word)}`,
     );
+
+    if (!data.details?.meanings || data.details.meanings.length === 0) {
+      throw new Error(`No definitions found for "${word}"`);
+    }
+
     return data;
   } catch (error) {
     console.error(`Error fetching word "${word}":`, error);

@@ -20,7 +20,7 @@ export const title = style({
 });
 
 export const section = style({
-  minHeight: "calc(80vh - 1rem)",
+  minHeight: "calc(80vh - 1.5rem)",
   padding: spacing["2xl"],
 });
 
