@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useFavorites } from "@/hooks/favorites/useFavorites";
 import clsx from "clsx";
 import * as styles from "./styles.css";
 import MainLayout from "@/templates/MainLayout";
 import { glass, glassCard } from "@/styles/components/glass.css";
 import { flexColumn } from "@/styles/components/gridSystem.css";
-import { useFavorites } from "@/hooks/favorites/useFavorites";
 import { Pagination } from "@/components/Pagination";
 import { Favorite } from "./Favorite";
 

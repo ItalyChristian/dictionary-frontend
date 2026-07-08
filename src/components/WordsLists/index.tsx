@@ -1,10 +1,10 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import clsx from "clsx";
 import * as styles from "./styles.css";
 import { WordListProps } from "./types";
-import { useRouter } from "next/navigation";
 
 export function WordList({
   words,

@@ -1,20 +1,22 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { useAuth } from "@/hooks/auth/useAuth";
 import clsx from "clsx";
 import * as styles from "./styles.css";
-import { usePathname } from "next/navigation";
 import { glass } from "@/styles/components/glass.css";
 import { navItems } from "./data";
 import { DoorOpen, Menu, X } from "lucide-react";
-import { useAuth } from "@/hooks/auth/useAuth";
-import { useState } from "react";
 import { colors } from "@/styles/tokens/colors.css";
 
 export const Sidebar = () => {
-  const { logout } = useAuth();
   const pathname = usePathname();
+
   const [visible, setVisible] = useState(false);
   const handleClose = () => setVisible(false);
+
+  const { logout } = useAuth();
 
   const isActive = (href: string) => {
     return pathname === href;
