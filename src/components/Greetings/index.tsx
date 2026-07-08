@@ -1,7 +1,7 @@
 "use client";
 
 import * as styles from "./styles.css";
-import { useGreeting } from "@/hooks/useGreeting";
+import { useGreeting } from "@/hooks/greeting/useGreeting";
 
 export type GreetingProps = {
   name?: string;
