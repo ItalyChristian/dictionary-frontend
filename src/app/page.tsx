@@ -31,7 +31,7 @@ export default function Home() {
     loadNext,
     loadPrevious,
     refetch,
-  } = useEntries(20);
+  } = useEntries(50);
 
   useEffect(() => {
     if (activeLetter) {

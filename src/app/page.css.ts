@@ -4,11 +4,18 @@ import { spacing } from "@/styles/tokens/spacing.css";
 import { typography } from "@/styles/tokens/typography.css";
 
 export const section = style({
+  width: "calc(80vw - 1rem)",
   minHeight: "calc(80vh - 1rem)",
   padding: spacing["2xl"],
   display: "flex",
   flexDirection: "column",
   gap: spacing.xl,
+
+  "@media": {
+    "(max-width: 1024px)": {
+      width: "calc(100vw - 3rem)",
+    },
+  },
 });
 
 export const pagination = style({

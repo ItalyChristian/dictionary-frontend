@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 import { colors } from "@/styles/tokens/colors.css";
 import { radii, spacing } from "@/styles/tokens/spacing.css";
 import { typography } from "@/styles/tokens/typography.css";
@@ -6,22 +6,11 @@ import { typography } from "@/styles/tokens/typography.css";
 export const container = style({
   display: "flex",
   gap: spacing.xs,
-  padding: `${spacing.sm} 0`,
+  padding: `${spacing.xs} 0`,
   overflowX: "auto",
   overflowY: "hidden",
   scrollbarWidth: "thin",
   WebkitOverflowScrolling: "touch",
-
-  "::-webkit-scrollbar": {
-    height: "4px",
-  },
-  "::-webkit-scrollbar-track": {
-    background: "transparent",
-  },
-  "::-webkit-scrollbar-thumb": {
-    background: colors.border.medium,
-    borderRadius: radii.full,
-  },
 });
 
 export const letterButton = style({
@@ -54,7 +43,32 @@ export const letterActive = style({
   transform: "scale(1.1)",
 
   ":hover": {
-    backgroundColor: colors.status.error,
+    backgroundColor: colors.status.purpleBg,
     transform: "scale(1.15)",
   },
+});
+
+globalStyle("::-webkit-scrollbar", {
+  width: "8px",
+  height: "8px",
+  background: "transparent",
+});
+
+globalStyle("::-webkit-scrollbar-track", {
+  background: "transparent",
+});
+
+globalStyle("::-webkit-scrollbar-thumb", {
+  background: colors.status.purple,
+  borderRadius: "10px",
+  transition: "background 0.2s ease",
+});
+
+globalStyle("::-webkit-scrollbar-thumb:hover", {
+  background: colors.status.purpleBg,
+});
+
+globalStyle("*", {
+  scrollbarWidth: "thin",
+  scrollbarColor: `${colors.background.glassActive} transparent`,
 });
