@@ -110,6 +110,8 @@ export const link = style({
   gap: "0.5rem",
   transition: "all 0.2s ease",
 
+  cursor: "pointer",
+
   ":hover": {
     color: colors.text.light,
     transform: "translateX(4px)",
@@ -129,6 +131,10 @@ export const primaryButton = style({
   transition: "all 0.2s ease",
   marginTop: "0.5rem",
   alignSelf: "flex-start",
+
+  outline: "none",
+  border: "none",
+  cursor: "pointer",
 
   ":hover": {
     backgroundColor: colors.background.glassHover,

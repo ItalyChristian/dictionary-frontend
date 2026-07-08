@@ -76,5 +76,10 @@ export const iconActive = style({
 
 export const logout = style([
   flexCenter,
-  { gap: spacing.sm, fontSize: typography.fontSize.md, cursor: "pointer" },
+  {
+    gap: spacing.sm,
+    fontSize: typography.fontSize.md,
+    cursor: "pointer",
+    color: colors.text.primary,
+  },
 ]);

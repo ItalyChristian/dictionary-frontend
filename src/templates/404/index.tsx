@@ -1,10 +1,20 @@
+"use client";
+
 import Link from "next/link";
 import * as styles from "./styles.css";
-import { House, KeyRound } from "lucide-react";
+import {
+  ArrowBigLeftDash,
+  ArrowLeftToLine,
+  CircleArrowLeft,
+  House,
+} from "lucide-react";
 import assistantVector from "@/assets/images/assistant-vector.png";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export const NotFoundComponent = () => {
+  const router = useRouter();
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -28,21 +38,22 @@ export const NotFoundComponent = () => {
             <ul className={styles.suggestionsList}>
               <li>
                 <Link href="/" className={styles.link}>
-                  <House size={14} /> Go back to the homepage
+                  <House size={14} /> <p>Go back to the homepage</p>
                 </Link>
               </li>
 
-              <li>
-                <Link href="/login" className={styles.link}>
-                  <KeyRound size={14} /> Go back to the login page
-                </Link>
+              <li onClick={() => router.back()} className={styles.link}>
+                <CircleArrowLeft size={14} /> <p>Return to previous page</p>
               </li>
             </ul>
           </div>
 
-          <Link href="/login" className={styles.primaryButton}>
-            Return to Homepage
-          </Link>
+          <button
+            className={styles.primaryButton}
+            onClick={() => router.back()}
+          >
+            Return to previous page
+          </button>
         </div>
       </div>
     </div>
