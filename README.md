@@ -75,12 +75,6 @@ Copie o arquivo de exemplo e ajuste se necessário:
 cp .env.example .env
 ```
 
-> 💡 Gere um `JWT_SECRET` forte com:
->
-> ```bash
-> node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
-> ```
-
 ### 3. Rodar o projeto
 
 ```bash
