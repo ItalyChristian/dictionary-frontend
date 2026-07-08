@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 import MainLayout from "@/templates/MainLayout";
 import { Header } from "@/components/Header";
@@ -16,6 +16,8 @@ import { PageError } from "@/templates/Error";
 
 export default function Home() {
   const [selectedWord, setSelectedWord] = useState<string | undefined>();
+  const [activeLetter, setActiveLetter] = useState<string>("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const {
     entries,
@@ -30,6 +32,35 @@ export default function Home() {
     loadPrevious,
     refetch,
   } = useEntries(20);
+
+  useEffect(() => {
+    if (activeLetter) {
+      setSearchTerm(activeLetter);
+    } else if (searchQuery) {
+      setSearchTerm(searchQuery);
+    } else {
+      setSearchTerm("");
+    }
+  }, [activeLetter, setSearchTerm, searchQuery]);
+
+  const filteredEntries = activeLetter
+    ? entries.filter((word) => word.charAt(0).toUpperCase() === activeLetter)
+    : entries;
+
+  const handleLetterSelect = (letter: string) => {
+    if (activeLetter === letter) {
+      setActiveLetter("");
+    } else {
+      setActiveLetter(letter);
+      setSearchQuery("");
+    }
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearchQuery(value);
+    setActiveLetter("");
+    setSearchTerm(value);
+  };
 
   if (isLoading && entries.length === 0) {
     return <PageLoading />;
@@ -47,41 +78,38 @@ export default function Home() {
         <section className={clsx(glassCard, styles.section)}>
           <SearchBar
             value={searchTerm}
-            onChange={setSearchTerm}
+            onChange={handleSearchChange}
             placeholder="Search for a word..."
             totalResults={totalDocs}
             isLoading={isLoading}
           />
 
-          {entries.length > 0 ? (
-            <>
-              <WordList
-                words={entries}
-                onWordSelect={setSelectedWord}
-                selectedWord={selectedWord}
-              />
-
-              <Pagination
-                hasNext={hasNext}
-                hasPrev={hasPrev}
-                onNext={loadNext}
-                onPrev={loadPrevious}
-                isLoading={isLoading}
-                totalItems={totalDocs}
-                className={styles.pagination}
-                mode="cursor"
-              />
-            </>
-          ) : (
-            <div className={styles.empty}>
-              <p>No words found</p>
-              <p className={styles.emptySub}>
-                {searchTerm
-                  ? `No results for "${searchTerm}"`
-                  : "Try adjusting your search"}
-              </p>
-            </div>
+          {totalDocs > 0 && (
+            <span className={styles.resultsCount}>
+              {filteredEntries.length.toLocaleString()} words found
+              {activeLetter && ` (filtered by letter ${activeLetter})`}
+              {searchQuery && ` for "${searchQuery}"`}
+            </span>
           )}
+
+          <WordList
+            words={filteredEntries}
+            onWordSelect={setSelectedWord}
+            selectedWord={selectedWord}
+            onLetterSelect={handleLetterSelect}
+            activeLetter={activeLetter}
+          />
+
+          <Pagination
+            hasNext={hasNext}
+            hasPrev={hasPrev}
+            onNext={loadNext}
+            onPrev={loadPrevious}
+            isLoading={isLoading}
+            totalItems={totalDocs}
+            className={styles.pagination}
+            mode="cursor"
+          />
         </section>
       </div>
     </MainLayout>
