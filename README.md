@@ -84,3 +84,6 @@ npm run dev
 ```
 
 A aplicação estará disponível em **http://localhost:3000**.
+
+<img width="1362" height="633" alt="Captura de tela 2026-07-08 032159" src="https://github.com/user-attachments/assets/cddcb80a-d7ae-47bf-99b4-5ef159d247b5" />
+
