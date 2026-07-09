@@ -43,7 +43,7 @@ export function LoginForm() {
       </Form.FieldGroup>
 
       <Form.FieldGroup>
-        <Form.Label htmlFor="password" text="Senha" />
+        <Form.Label htmlFor="password" text="Password" />
 
         <TextField.Root
           id="password"
