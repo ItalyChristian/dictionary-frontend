@@ -84,3 +84,7 @@ npm run dev
 ```
 
 A aplicação estará disponível em **http://localhost:3000**.
+
+---
+
+v1.1.0 desenvolvida em 23 horas e 43 minutos (entre os dias 06/07/2026 e 08/07/2026)
