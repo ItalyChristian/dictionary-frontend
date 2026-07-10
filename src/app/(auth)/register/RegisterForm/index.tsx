@@ -36,6 +36,7 @@ export function RegisterForm() {
           className={input}
           size="2"
           placeholder="Insert your name"
+          maxLength={255}
           disabled={isPending}
           required
         />
@@ -51,6 +52,7 @@ export function RegisterForm() {
           size="2"
           placeholder="Insert your e-mail"
           autoComplete="email"
+          maxLength={100}
           disabled={isPending}
           required
         />
@@ -67,6 +69,7 @@ export function RegisterForm() {
           size="2"
           placeholder="Create your password"
           autoComplete="current-password"
+          maxLength={100}
           disabled={isPending}
           required
         >

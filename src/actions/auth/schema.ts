@@ -5,7 +5,7 @@ export const loginSchema = z.object({
     .string()
     .email("Invalid e-mail format")
     .min(1, "E-mail is required")
-    .max(255, "E-mail too long"),
+    .max(100, "E-mail too long"),
   password: z
     .string(
       "Password must be at least 6 characters long including 1 letter and 1 number.",
@@ -20,7 +20,7 @@ export const registerSchema = z.object({
     .string()
     .email("Invalid e-mail format")
     .min(1, "E-mail is required")
-    .max(255, "E-mail too long"),
+    .max(100, "E-mail too long"),
   password: z
     .string(
       "Password must be at least 6 characters long including 1 letter and 1 number.",
