@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { glass } from "@/styles/components/glass.css";
 import * as styles from "./styles.css";
 import { SearchBarProps } from "./types";
+import { Search } from "lucide-react";
 
 export function SearchBar({
   value,
@@ -33,18 +34,7 @@ export function SearchBar({
   return (
     <div className={clsx(styles.container, glass, className)}>
       <div className={styles.searchWrapper}>
-        <svg
-          className={styles.searchIcon}
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <circle cx="11" cy="11" r="8" />
-          <line x1="21" y1="21" x2="16.65" y2="16.65" />
-        </svg>
+        <Search className={styles.searchIcon} />
 
         <input
           ref={inputRef}
